@@ -1,0 +1,33 @@
+*1* 144
+>>  "Find a function that will give you the size of the elements of a dataframe."
+
+*2* 3.7
+>>  "Look at the function used to calculate the average age."
+
+*3* 34
+>>  "Find a function that gets the amount of each unique answer."
+
+*4* 26
+>>  "Find a function that gets the amount of each unique answer."
+
+*5* 3
+>>  "Try creating a new dataframe with the desired conditions."
+>>  "There are three conditions needed to get the answer."
+>>  "Use the 'Country' column."
+>>  "Use the 'Num_full_term_pregnancies' column."
+>>  "Use the 'Age' column."
+
+*6* Stage II
+>>  "Try creating two new dataframes for stage 2 and stage 4 cancer stages."
+>>  "There are two conditions needed for the dataframes."
+>>  "Use the 'tumor_Stage_pathological' column."
+>>  "Use the 'BMI' column."
+
+*7* 4.6
+>>  "Try creating a new dataframe for each individual country."
+>>  "Look at how number 2 was completed."
+
+*8* 2.3
+
+
+*9* 5.5
