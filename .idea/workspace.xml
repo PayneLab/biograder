@@ -7,8 +7,15 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/src" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ivwVK5ZYwNVGSIaS5ZmQElddSf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -20,6 +27,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PayneResearch\biograder\biograder" />
+      <recent name="C:\PayneResearch\biograder\biograder\HomeworkFiles" />
+      <recent name="C:\PayneResearch\biograder" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -33,13 +47,14 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="391" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1603215840400">
+    <state x="391" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604001322978">
       <screen x="0" y="0" width="1280" height="984" />
     </state>
-    <state x="391" y="294" key="#com.intellij.fileTypes.FileTypeChooser/-1920.-49.1280.693/0.0.1280.984@0.0.1280.984" timestamp="1603215840400" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1602801528342">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="391" y="294" key="#com.intellij.fileTypes.FileTypeChooser/-1920.-49.1280.693/0.0.1280.984@0.0.1280.984" timestamp="1604001322978" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1603998789609">
+      <screen x="0" y="0" width="1280" height="984" />
     </state>
+    <state x="142" y="0" key="SettingsEditor/-1920.-49.1280.693/0.0.1280.984@0.0.1280.984" timestamp="1603998789609" />
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1602801528342" />
   </component>
 </project>
