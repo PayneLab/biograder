@@ -18,8 +18,7 @@ def version():
     return (version['__version__'])
 
 #FIXME: change this to biograder's version.txt direct link url
-
-version_url = "https://byu.box.com/shared/static/kbwivmqnrdnn5im2gu6khoybk5a3rfl0.txt"
+version_url = "https://byu.box.com/shared/static/vleywdnhpw034sg1peh85nt9p9pxn7y9.txt"
 try:
     remote_version = _download_text(version_url)
 except NoInternetError:
