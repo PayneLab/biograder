@@ -1,4 +1,4 @@
-from src.biograder.Homework import Homework
+from biograder import Homework
 
 
 class Homework18(Homework):

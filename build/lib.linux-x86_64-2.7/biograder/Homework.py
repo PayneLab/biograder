@@ -1,4 +1,4 @@
-from src.biograder.Encryptor import Encryptor
+from biograder import Encryptor
 
 class Homework:
 

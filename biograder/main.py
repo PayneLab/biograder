@@ -1,4 +1,4 @@
-from src.biograder.Homework18 import Homework18
+from biograder.Homework18 import Homework18
 
 
 def main():
