@@ -8,15 +8,16 @@ class Encryptor:
 
     def __init__(self):
         #Todo: read key from file
-        self.getKey()
+        self.public_key = self.getKey()
         pass
 
     def getKey(self):
         with open("public_key.pem", "rb") as key_file:
-            self.public_key = serialization.load_pem_public_key(
+            public_key = serialization.load_pem_public_key(
                 key_file.read(),
                 backend=default_backend()
             )
+            return public_key
 
     def uploadToBox(self, raw_file):
         #need to parse out answers and encrypt them
@@ -25,9 +26,13 @@ class Encryptor:
         pass
 
     def encrypt(self, raw_data):
+        print(raw_data)
+        #below posed as a possible alternative
+        #pow(message, public.e, public.n)
         encrypted = self.public_key.encrypt(
             raw_data,
             padding.OAEP(
+                #mgf=padding.MGF1(algorithm=hashes.SHA256()),
                 mgf=padding.MGF1(algorithm=hashes.SHA256()),
                 algorithm=hashes.SHA256(),
                 label=None

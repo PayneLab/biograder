@@ -17,7 +17,7 @@ def version():
         exec(fp.read(), version)
     return (version['__version__'])
 
-#FIXME: change this to biograder's version.txt direct link url
+# The link to download the version file in the home directory of the biograder
 version_url = "https://byu.box.com/shared/static/vleywdnhpw034sg1peh85nt9p9pxn7y9.txt"
 try:
     remote_version = _download_text(version_url)
@@ -26,4 +26,4 @@ except NoInternetError:
 else:
     local_version = version()
     if remote_version != local_version:
-        warnings.warn(f"Your version of cptac ({local_version}) is out-of-date. Latest is {remote_version}. Please run 'pip install --upgrade cptac' to update it.", OldPackageVersionWarning, stacklevel=2)
+        warnings.warn(f"Your version of biograder ({local_version}) is out-of-date. Latest is {remote_version}. Please run 'pip install --upgrade biograder' to update it.", OldPackageVersionWarning, stacklevel=2)
