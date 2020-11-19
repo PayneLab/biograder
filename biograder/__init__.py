@@ -2,10 +2,15 @@ import os.path as path
 import sys
 import warnings
 
+from .Encryptor import Encryptor
+from .KeyGenerator import KeyGenerator
+from .Parser import Parser
+from .Homework18 import Homework18
+from .file_download import download
+from .file_download import download_text as _download_text
+
 from .exceptions import BiograderError, NoInternetError, OldPackageVersionWarning
 
-#from .file_download import download
-from .file_download import download_text as _download_text
 
 
 def version():
