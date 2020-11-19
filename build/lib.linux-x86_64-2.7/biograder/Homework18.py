@@ -7,6 +7,7 @@ import warnings
 
 class Homework18(Homework):
 
+    # version="latest"
     def __init__(self, version="latest", no_internet=False):
 
         valid_versions = ["0.0.1", "0.0.2"]
@@ -20,15 +21,11 @@ class Homework18(Homework):
             ]
         }
 
-        super().__init__(hw_number="18", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
+        super().__init__(hw_number="hw18", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
         #need to reference file of answer key and hints
-        self.answerFile = open("HW18_Ans", "r")
+        self.answerFile = open("HW18_Ans.txt", "r")
         self.ansArray = self.parseAnswers(self.answerFile)
-        # self.hintFile = open("HW18Hint", "r")
-        # self.hintDict = self.parseHints(self.hintFile)
-
-    def printSomething(self):
-        print("Something")
+        self.hintDict = self.parseHints("HW18_Hint.txt")
 
     def returnAns(self):
         return self.ansArray

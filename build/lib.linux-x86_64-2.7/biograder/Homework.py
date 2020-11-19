@@ -18,11 +18,11 @@ class Homework:
                 pass
 
         # Validate the version
-        self._version = validate_version(version, self._cancer_type, use_context="init", valid_versions=valid_versions)
+        self._version = validate_version(version, self._hw_number, use_context="init", valid_versions=valid_versions)
 
         # Get the paths to the data files
         version_data_files = data_files[self._version]  # Get the data files for this version from the data files dictionary
-        self._data_files_paths = get_version_files_paths(self._cancer_type, self._version, version_data_files)
+        self._data_files_paths = get_version_files_paths(self._hw_number, self._version, version_data_files)
 
         #FIXME: Might need more code to make sure every file is up to date
 
@@ -44,11 +44,22 @@ class Homework:
             tempArray.append(ans)
         return tempArray
 
-    def parseHints(self, hintFile):
-        #return a dictionary or list or something
-        pass
+    def parseHints(self, file_path):
+        tempDict = {}
+        with open(file_path, 'r') as file_path:
+            file_lines = file_path.readlines()
+        quesNum = 1
+        for line in file_lines:
+            line = line.strip()
+            if line.startswith('#'):
+                quesNum = line[1:]
+                newList = []
+                tempDict[quesNum] = newList
+            else:
+                tempDict[quesNum].append(line)
+        return tempDict
 
-    def submit(self, guess, qNum, studentID):
+    def submit(self, qNum, guess, studentID):
         #bitGuess = str.encode(guess)
         #encrypt the submission
         #enc_guess = Encryptor().encrypt(bitGuess)
@@ -59,7 +70,14 @@ class Homework:
         else:
             return False
 
-    def getHint(self, hintNum):
+    def getHint(self, ques_num):
         #lessen hintNum to highest possible hint value
-        pass
+        if len(self.hintDict) < ques_num:
+            return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
+        ques_num = str(ques_num)
+        hints = "Question " + str(ques_num) + " hints:\n"
+        for hint in self.hintDict[ques_num]:
+            hints += "*" + str(hint) + "\n"
+        print(hints)
+        # return hints
 

@@ -6,6 +6,7 @@ from .Encryptor import Encryptor
 from .KeyGenerator import KeyGenerator
 from .Parser import Parser
 from .Homework18 import Homework18
+from .Homework3 import Homework3
 from .file_download import download
 from .file_download import download_text as _download_text
 

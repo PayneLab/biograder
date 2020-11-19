@@ -3,7 +3,9 @@ setup.py
 biograder/Encryptor.py
 biograder/Homework.py
 biograder/Homework18.py
+biograder/Homework3.py
 biograder/KeyGenerator.py
+biograder/Parser.py
 biograder/__init__.py
 biograder/exceptions.py
 biograder/file_download.py

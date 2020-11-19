@@ -1,12 +1,12 @@
 from biograder.Homework18 import Homework18
+from biograder.Parser import Parser
 
 
 def main():
-    hw18 = Homework18()
-    # print(hw18.submit("TEST2", 2, 12))
-    testString = "TEST2"
+    parser = Parser()
 
-    print(hw18.submit(testString, 2, "netid"))
+    parser("HW18.txt")
+
 
 
 if __name__ == "__main__":

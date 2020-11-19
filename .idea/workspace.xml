@@ -43,10 +43,13 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/biograder/data_hw3" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\PayneResearch\biograder\biograder\data_hw3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\PayneResearch\biograder\biograder" />
       <recent name="C:\PayneResearch\biograder\biograder\HomeworkFiles" />
