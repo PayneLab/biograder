@@ -10,7 +10,7 @@ class Homework18(Homework):
     # version="latest"
     def __init__(self, version="latest", no_internet=False):
 
-        valid_versions = ["0.0.1", "0.0.2"]
+        valid_versions = ["0.0.1", "0.0.2", "0.0.3"]
 
         data_files = {
             "0.0.1": [
@@ -18,6 +18,10 @@ class Homework18(Homework):
             ],
             "0.0.2": [
                 "HW18_Ans.txt"
+            ],
+            "0.0.3": [
+                "HW18_Ans.txt",
+                "HW18_Hint.txt"
             ]
         }
 

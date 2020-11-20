@@ -19,6 +19,7 @@ def download(dataset, version="latest", redownload=False):
     if dataset == "all":
         datasets = [
             "hw18",
+            "hw3",
         ]
 
         overall_result = True

@@ -3,6 +3,7 @@ import re
 from .file_download import update_index
 from .file_tools import validate_version, get_version_files_paths
 from .exceptions import *
+import hashlib
 
 class Homework:
     #filepath
@@ -37,9 +38,10 @@ class Homework:
             print("\t{}\n\t\tDimensions: {}".format(name, df.shape))
 
 
-    def parseAnswers(self, answerFile):
+    def parseAnswers(self, file_path):
+        self.answerFile = open(file_path, "r")
         tempArray = []
-        for ans in answerFile:
+        for ans in self.answerFile:
             ans = ans.rstrip('\n')
             tempArray.append(ans)
         return tempArray
@@ -60,12 +62,13 @@ class Homework:
         return tempDict
 
     def submit(self, qNum, guess, studentID):
-        #bitGuess = str.encode(guess)
-        #encrypt the submission
-        #enc_guess = Encryptor().encrypt(bitGuess)
+
+        guess = str(guess)
+        guess = self.hashGuess(str(guess))
 
         if self.ansArray[qNum - 1] == guess:
-            #add student id google sheet stuff here
+            #TODO: add student id google sheet stuff here
+
             return True
         else:
             return False
@@ -78,6 +81,12 @@ class Homework:
         hints = "Question " + str(ques_num) + " hints:\n"
         for hint in self.hintDict[ques_num]:
             hints += "*" + str(hint) + "\n"
+        hints = hints[:len(hints)-1]
         print(hints)
         # return hints
 
+    def hashGuess(self, guess):
+        hashedGuess = \
+            hashlib.sha256(guess.encode()).hexdigest()
+        # print(hashedGuess)
+        return str(hashedGuess)
