@@ -1,10 +1,11 @@
-
+import hashlib
 
 class Parser:
     def __init__(self):
         pass
 
-    def parseKey(self, file_path):
+    # give path of base file, and desired .txt file names of ans and hint files (HW'-'_Ans.txt, HW'-'_Hint.txt)
+    def parseKey(self, file_path, ansFileName, hintFileName):
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()
 
@@ -18,6 +19,10 @@ class Parser:
                 endOfNum = self.find_nth(line, "*", 2)
                 question_num = line[1:endOfNum]
                 answer = line[endOfNum+2:]
+
+                # hashes each answer via SHA256
+                answer = str(self._hashText(answer))
+
                 toAppend = answer + "\n"
                 answerText += toAppend
                 startHint = True
@@ -35,10 +40,10 @@ class Parser:
         answerText = answerText[:len(answerText)-1]
         hintsText = hintsText[:len(hintsText)-1]
 
-        ansFile = open("ans_file.txt", "w")
+        ansFile = open(ansFileName, "w")
         ansFile.write(answerText)
         ansFile.close()
-        hintFile = open("hint_file.txt", "w")
+        hintFile = open(hintFileName, "w")
         hintFile.write(hintsText)
         hintFile.close()
 
@@ -48,3 +53,8 @@ class Parser:
             start = text.find(toFind, start + len(toFind))
             n -= 1
         return start
+
+    def _hashText(self, text):
+        hashedText = \
+            hashlib.sha256(text.encode()).hexdigest()
+        return hashedText
