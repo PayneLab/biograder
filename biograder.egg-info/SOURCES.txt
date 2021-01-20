@@ -1,10 +1,9 @@
 MANIFEST.in
+README.md
 setup.py
-biograder/Encryptor.py
 biograder/Homework.py
 biograder/Homework18.py
 biograder/Homework3.py
-biograder/KeyGenerator.py
 biograder/Parser.py
 biograder/__init__.py
 biograder/exceptions.py
@@ -18,3 +17,7 @@ biograder.egg-info/dependency_links.txt
 biograder.egg-info/not-zip-safe
 biograder.egg-info/requires.txt
 biograder.egg-info/top_level.txt
+biograder/utils/__init__.py
+biograder/utils/other_utils.py
+biograder/utils/pathway_utils.py
+biograder/utils/stats_utils.py

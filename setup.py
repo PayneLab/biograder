@@ -18,7 +18,7 @@ with open(readme_path) as readme_file:
 
 setup(
     name='biograder',
-    version='1.0.0',
+    version='1.0.1',
     author='PayneLab',
     author_email='sam_payne@byu.edu',
     description='grader',
