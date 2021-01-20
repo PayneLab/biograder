@@ -18,14 +18,13 @@ with open(readme_path) as readme_file:
 
 setup(
     name='biograder',
-    version='1.0.1',
+    version='1.0.3',
     author='PayneLab',
     author_email='sam_payne@byu.edu',
     description='grader',
     url='https://github.com/PayneLab/biograder',
-    packages=['biograder', 'biograder.utils'],
+    packages=['biograder'],
     install_requires=[
-        'beautifulsoup4>=4.7.1',
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
