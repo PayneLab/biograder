@@ -77,7 +77,7 @@ class Homework:
         #lessen hintNum to highest possible hint value
         if len(self.hintDict) < ques_num:
             return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
-        ques_num = str(ques_num)
+        ques_num = str(ques_num)  #cast to string for safety
         hints = "Question " + str(ques_num) + " hints:\n"
         for hint in self.hintDict[ques_num]:
             hints += "*" + str(hint) + "\n"
