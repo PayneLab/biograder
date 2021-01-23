@@ -6,18 +6,28 @@ import packaging.version
 from .exceptions import *
 
 def get_dataset_path(dataset):
-    """Get the path to the main directory for a dataset.
+    """Get the path to the main directory for a dataset/homework.
     Parameters:
     dataset (str): The path to get the directory for. Must be all lowercase.
     Returns:
     str: The path to the main directory of the specified dataset.
     """
+    to_print = os.defpath
+    print(to_print)
+
     path_here = os.path.abspath(os.path.dirname(__file__))
+    print(path_here)
     dataset_dir = f"data_{dataset}"
+    print(dataset_dir)
     dataset_path = os.path.join(path_here, dataset_dir)
+    print(dataset_path)
+    list_dir = os.listdir()
+    print("LISTDIR")
+    print(list_dir)
     if os.path.isdir(dataset_path):
         return dataset_path
     else:
+        print("ERRORS else")
         raise InvalidParameterError(f"{dataset} is not a valid dataset.")
 
 def validate_version(version, dataset, use_context, valid_versions=None):
