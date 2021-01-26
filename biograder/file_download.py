@@ -1,4 +1,3 @@
-import os
 import requests
 import getpass
 import bs4
@@ -6,15 +5,19 @@ import bs4
 from .file_tools import *
 from .exceptions import NoInternetError
 
+
 def download(dataset, version="latest", redownload=False):
     """Download data files for the specified datasets. Defaults to downloading latest version on server.
-    Parameters:
-    dataset (str): The name of the dataset to download data for, or "all" to download data for all datasets
-    version (str, optional): Which version of the data files to download. Defaults to latest on server.
-    redownload (bool, optional): Whether to redownload the data files, even if that version of the data is already downloaded. Default False.
-    Returns:
-    bool: Indicates whether download was successful.
+
+        Parameters:
+            dataset (str): The name of the dataset to download data for, or "all" to download data for all datasets
+            version (str, optional): Which version of the data files to download. Defaults to latest on server.
+            redownload (bool, optional): Whether to redownload the data files, even if that version of the data is already downloaded. Default False.
+
+        Returns:
+            bool: Indicates whether download was successful.
     """
+
     # Process the optional "all" parameter
     if dataset == "all":
         datasets = [
@@ -81,9 +84,9 @@ def download(dataset, version="latest", redownload=False):
     for data_file in files_to_download:
 
         if (dataset in password_protected_datasets) and (password is None):
-            password = getpass.getpass(prompt=f'Password for {dataset} dataset: ') # We manually specify the prompt parameter so it shows up in Jupyter Notebooks
-            print("\033[F", end='\r') # Use an ANSI escape sequence to move cursor back up to the beginning of the last line, so in the next line we can clear the password prompt
-            print("\033[K", end='\r') # Use an ANSI escape sequence to print a blank line, to clear the password prompt
+            password = getpass.getpass(prompt=f'Password for {dataset} dataset: ')  # We manually specify the prompt parameter so it shows up in Jupyter Notebooks
+            print("\033[F", end='\r')  # Use an ANSI escape sequence to move cursor back up to the beginning of the last line, so in the next line we can clear the password prompt
+            print("\033[K", end='\r')  # Use an ANSI escape sequence to print a blank line, to clear the password prompt
 
         file_index = version_index.get(data_file)
         server_hash = file_index.get("hash")
@@ -96,19 +99,23 @@ def download(dataset, version="latest", redownload=False):
 
         while downloaded_path == "wrong_password":
             password = getpass.getpass(prompt="Wrong password. Try again: ")
-            print("\033[F", end='\r') # Use an ANSI escape sequence to move cursor back up to the beginning of the last line, so in the next line we can clear the password prompt
-            print("\033[K", end='\r') # Use an ANSI escape sequence to print a blank line, to clear the password prompt
+            print("\033[F", end='\r')  # Use an ANSI escape sequence to move cursor back up to the beginning of the last line, so in the next line we can clear the password prompt
+            print("\033[K", end='\r')  # Use an ANSI escape sequence to print a blank line, to clear the password prompt
 
             downloaded_path = download_file(file_url, file_path, server_hash, password=password, file_message=f"{dataset} v{version} data files", file_number=file_number, total_files=total_files)
     return True
 
+
 def update_index(dataset):
     """Check if the index of the given dataset is up to date with server version, and update it if needed.
-    Parameters:
-    dataset (str): The name of the dataset to check the index of.
-    Returns:
-    bool: Indicates if we were able to check the index and update if needed (i.e. we had internet)
+
+        Parameters:
+            dataset (str): The name of the dataset to check the index of.
+
+        Returns:
+            bool: Indicates if we were able to check the index and update if needed (i.e. we had internet)
     """
+
     # Get the path to our dataset
     dataset_path = get_dataset_path(dataset)
 
@@ -127,7 +134,7 @@ def update_index(dataset):
     try:
         server_index_hash = download_text(index_hash_url)
     finally:
-        print(" " * len(checking_msg), end='\r') # Erase the checking message, even if there was an internet error
+        print(" " * len(checking_msg), end='\r')  # Erase the checking message, even if there was an internet error
 
     index_path = os.path.join(dataset_path, index_file)
 
@@ -146,17 +153,21 @@ def update_index(dataset):
     # If we get here, something apparently went wrong with the download.
     raise NoInternetError("Insufficient internet. Check your internet connection.")
 
+
 def download_text(url):
     """Download text from a direct download url for a text file.
-    Parameters:
-    url (str): The direct download url for the text.
-    Returns:
-    str: The downloaded text.
+
+        Parameters:
+            url (str): The direct download url for the text.
+
+        Returns:
+            str: The downloaded text.
     """
+
     try:
         response = requests.get(url, allow_redirects=True)
-        response.raise_for_status() # Raises a requests HTTPError if the response code was unsuccessful
-    except requests.RequestException: # Parent class for all exceptions in the requests module
+        response.raise_for_status()  # Raises a requests HTTPError if the response code was unsuccessful
+    except requests.RequestException:  # Parent class for all exceptions in the requests module
         raise NoInternetError("Insufficient internet. Check your internet connection.") from None
 
     text = response.text.strip()
@@ -165,17 +176,20 @@ def download_text(url):
 
 def download_file(url, path, server_hash, password=None, file_message=None, file_number=None, total_files=None):
     """Download a file from a given url to the specified location.
-    Parameters:
-    url (str): The direct download url for the file.
-    path (str): The path to the file (not just the directory) to save the file to on the local machine.
-    server_hash (str): The hash for the file, to check it against. If check fails, try download one more time, then throw an exception.
-    password (str, optional): If the file is password protected, the password for it. Unneeded otherwise.
-    file_message (str, optional): Identifing message about the file, to be printed while it's downloading. Default None will cause the full file name to be printed.
-    file_number (int, optional): Which file this is in a batch of files, if you want to print a "File 1/15", "File 2/15", etc. sort of message. Must also pass total_files parameter.
-    total_files (int, optional): The total number of files in the download batch, if you're printing that. Must also pass file_number parameter.
-    Returns:
-    str: The path the file was downloaded to.
+
+        Parameters:
+            url (str): The direct download url for the file.
+            path (str): The path to the file (not just the directory) to save the file to on the local machine.
+            server_hash (str): The hash for the file, to check it against. If check fails, try download one more time, then throw an exception.
+            password (str, optional): If the file is password protected, the password for it. Unneeded otherwise.
+            file_message (str, optional): Identifing message about the file, to be printed while it's downloading. Default None will cause the full file name to be printed.
+            file_number (int, optional): Which file this is in a batch of files, if you want to print a "File 1/15", "File 2/15", etc. sort of message. Must also pass total_files parameter.
+            total_files (int, optional): The total number of files in the download batch, if you're printing that. Must also pass file_number parameter.
+
+        Returns:
+            str: The path the file was downloaded to.
     """
+
     # We provide the option of displaying a message indicating which file this is in a batch of files we're currently downloading
     batch_status = ''
     if (file_number is not None) and (total_files is not None):
