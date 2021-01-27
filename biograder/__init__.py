@@ -1,5 +1,4 @@
 import os.path as path
-import sys
 import warnings
 
 from .Parser import Parser
@@ -11,7 +10,6 @@ from .file_download import download_text as _download_text
 from .exceptions import BiograderError, NoInternetError, OldPackageVersionWarning
 
 
-
 def version():
     """Return version number of biograder package."""
     version = {}
@@ -19,7 +17,8 @@ def version():
     version_path = path.join(path_here, "version.py")
     with open(version_path) as fp:
         exec(fp.read(), version)
-    return (version['__version__'])
+    return version['__version__']
+
 
 # The link to download the version file in the home directory of the biograder
 version_url = "https://byu.box.com/shared/static/vleywdnhpw034sg1peh85nt9p9pxn7y9.txt"
