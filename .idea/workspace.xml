@@ -16,13 +16,7 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="BRANCH:maddy" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </select>
+    <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fdcff88a-e968-4269-8beb-11b8843949b9" name="Default Changelist" comment="">
@@ -54,18 +48,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/sheets.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/devdocs" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\PayneResearch\biograder\biograder\data_hw3" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\maddy\Documents\School\Winter2021\BIO494R\Biograder\biograder\biograder" />
       <recent name="C:\PayneResearch\biograder\biograder" />
       <recent name="C:\PayneResearch\biograder\biograder\HomeworkFiles" />
       <recent name="C:\PayneResearch\biograder" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\PayneResearch\biograder\devdocs" />
+      <recent name="C:\PayneResearch\biograder\biograder\data_hw3" />
     </key>
   </component>
   <component name="RunManager" selected="Python.sheets">
@@ -112,8 +107,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.main" />
       <item itemvalue="Python.sheets" />
+      <item itemvalue="Python.main" />
     </list>
     <recent_temporary>
       <list>

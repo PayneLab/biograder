@@ -2,7 +2,7 @@ import os.path as path
 import warnings
 
 from .Parser import Parser
-from .Homework18 import Homework18
+from .Homework1 import Homework1
 from .Homework3 import Homework3
 from .file_download import download
 from .file_download import download_text as _download_text
