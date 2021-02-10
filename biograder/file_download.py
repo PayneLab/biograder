@@ -21,7 +21,7 @@ def download(dataset, version="latest", redownload=False):
     # Process the optional "all" parameter
     if dataset == "all":
         datasets = [
-            "hw18",
+            "hw1",
             "hw3",
         ]
 
