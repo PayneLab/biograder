@@ -72,7 +72,7 @@ class Homework:
                      "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
             creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
             client = gspread.authorize(creds)
-
+            # fixme: self._hw_number is now formatted as "bio462_hw3" instead of "hw3" for connection to sheets
             hwGrades = client.open("BiograderGrades").worksheet(self._hw_number)
             studentIDs = hwGrades.col_values(1)
             if studentID in studentIDs:
