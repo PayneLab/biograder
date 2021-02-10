@@ -1,5 +1,5 @@
 *1*	answer_to_question_one
->>	"The hints "
+>>	"The hints are contained in quotes following a >> and a tab"
 >>	"second hint for question 1"
 
 *2*	answer cannot have any endline characters (ie. \n) or an endline itself

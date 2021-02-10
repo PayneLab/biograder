@@ -2,10 +2,10 @@ MANIFEST.in
 README.md
 setup.py
 biograder/Homework.py
-biograder/Homework18.py
-biograder/Homework3.py
 biograder/Parser.py
 biograder/__init__.py
+biograder/bio462_hw1.py
+biograder/bio462_hw3.py
 biograder/exceptions.py
 biograder/file_download.py
 biograder/file_tools.py
@@ -16,5 +16,3 @@ biograder.egg-info/SOURCES.txt
 biograder.egg-info/dependency_links.txt
 biograder.egg-info/not-zip-safe
 biograder.egg-info/top_level.txt
-biograder/data_hw18/index_urls.tsv
-biograder/data_hw3/index_urls.tsv

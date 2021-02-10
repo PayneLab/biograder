@@ -2,12 +2,7 @@ from .Homework import Homework
 import os
 
 
-<<<<<<< HEAD:biograder/bio462_hw3.py
 class bio462_hw3(Homework):
-=======
-# bio462_hw3
-class Homework3(Homework):
->>>>>>> 8884739c0380530ac63213c16c8eea2a60f88d8a:biograder/Homework3.py
 
     # version="latest"
     def __init__(self, version="latest", no_internet=False):

@@ -2,8 +2,8 @@ import os.path as path
 import warnings
 
 from .Parser import Parser
-from .Homework18 import Homework18
-from .Homework3 import Homework3
+from .bio462_hw1 import bio462_hw1
+from .bio462_hw3 import bio462_hw3
 from .file_download import download
 from .file_download import download_text as _download_text
 
