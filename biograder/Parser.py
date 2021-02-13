@@ -5,8 +5,8 @@ class Parser:
     def __init__(self):
         pass
 
-    # give path of base file, and desired .txt file names of ans and hint files (HW'-'_Ans.txt, HW'-'_Hint.txt)
-    def parseKey(self, file_path, ansFileName, hintFileName):
+    # give path of base file, and desired hw name (bio462_hw3)
+    def parseKey(self, file_path, hwName):
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()
 
@@ -40,6 +40,9 @@ class Parser:
         # make files
         answerText = answerText[:len(answerText)-1]
         hintsText = hintsText[:len(hintsText)-1]
+
+        ansFileName = hwName + "_ans.txt"
+        hintFileName = hwName + "_hint.txt"
 
         ansFile = open(ansFileName, "w")
         ansFile.write(answerText)
