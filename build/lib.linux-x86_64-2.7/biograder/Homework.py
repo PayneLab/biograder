@@ -66,21 +66,22 @@ class Homework:
         guess = self.hashGuess(str(guess))
 
         if self.ansArray[qNum - 1] == guess:
-            
-            # Connect to Google Sheets
-            scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
-                     "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-            creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
-            client = gspread.authorize(creds)
 
-            # fixme: self._hw_number is now formatted as "bio462_hw3" instead of "hw3" for connection to sheets
-            # Update student grades
-            hwGrades = client.open("BiograderGrades").worksheet(self._hw_number)
-            studentIDs = hwGrades.col_values(1)
-            if studentID in studentIDs:
-                studentIndex = studentIDs.index(studentID) + 1
-                qNumIndex = qNum + 1
-                hwGrades.update_cell(studentIndex, qNumIndex, 100)
+            # fi
+            # Connect to Google Sheets
+            # scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
+            #          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
+            # creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
+            # client = gspread.authorize(creds)
+            #
+            # # fixme: self._hw_number is now formatted as "bio462_hw3" instead of "hw3" for connection to sheets
+            # # Update student grades
+            # hwGrades = client.open("BiograderGrades").worksheet(self._hw_number)
+            # studentIDs = hwGrades.col_values(1)
+            # if studentID in studentIDs:
+            #     studentIndex = studentIDs.index(studentID) + 1
+            #     qNumIndex = qNum + 1
+            #     hwGrades.update_cell(studentIndex, qNumIndex, 100)
             return True
         
         else:
