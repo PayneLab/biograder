@@ -52,3 +52,22 @@ for the biograder, we use this pattern: 'bio462_hw3'
 12. Add index urls file to the MANIFEST.in file, which is in the same directory as setup.py
 13. Add dataset's data folder to the .gitignore, which is in the same directory as setup.py, but use an exclamation point to include the index_urls.tsv file (see existing entries in the .gitignore for examples)
 
+
+## Adding the code for a new dataset
+
+1. **Important:** Whenever you're testing changes to your code, make sure to locally install the package using `pip`, using the following instructions. These instructions will take the local copy of the package that you've been editing and install it in your Anaconda environment's package installation directory. This will make it so that when you've opened a Python prompt or a Jupyter Notebook from that Anaconda environment and then import the package, you'll be importing your edited version of the package. This allows you to test the edits you've made, without having to push them to PyPI. So, to install your locally edited version of the package:
+    1. Open your Anaconda prompt or terminal
+    2. Activate your development environment (`conda activate MyEnvironment`, subbing in the name of your environment)
+    3. Navigate to the biograder directory that contains the `setup.py` file (which is the upper biograder directory, not the lower one). `pip` reads this file to know how to install the package.
+    4. In that directory, run this command: `pip install .` (don't forget the dot--it's a reference to your current directory, telling pip to build the package based on the `setup.py` file it finds in the current directory)
+    5. Alternatively, if you're in a different directory, you could run `pip install /path/to/biograder/directory/with/setup/py/file`, subbing in the proper path to the biograder `setup.py` file, and replacing / with \ if you're on Windows. `pip` will follow that path, find the `setup.py` file, and then install the package based off of it.
+2. Copy the child_dataset_template.py file to create a new class for the new dataset, inheriting from the abstract `Homework` class. When you copy the template to a new file,store the new file in the biograder/biograder/ directory, and set its name as the dataset's name or acronym, all lowercase, with .py as the extension. For example, the loader for the bio462 third homework is called `bio462_hw3.py`; for the same course's first homework, it's called `bio462_hw1.py`.
+    1. The name of the class for the new dataset should be the dataset's name or acronym in '_' delimited lowercase_format. For example, the Bio 462 homework 3's class is `bio462_hw3`, and the 1st homework's class is `bio462_hw1`.
+    2. See child_dataset_template.py for more info.
+3. At the top of `biograder/__init__.py`, add a line to import the dataset class from its file, using the lowercase file name and the homework name (e.g. `from .bio462_hw1 import bio462_hw1`)
+4. Update metadata:
+    1. In the biograder/file_download.py file, add the lowercase acronym for the homework to the list of all homeworks, which list is named `homeworks`, at the beginning of the `download` function.
+5. Add the new dataset name to the list of all datasets at the very beginning of the `download` function in `biograder/file_download.py` (located within the `if` statement that handles the case where the user passes `"all"` for the `dataset` parameter).
+6. If the homework is password protected, add it to the `password_protected_datasets` list in the `download` function in the `biograder/file_download.py` file. Also make sure it has a password access only warning at the end of its `__init__` function.
+7. At the point marked in the child dataset template, write code to format the dataframes according to the specifications below.
+

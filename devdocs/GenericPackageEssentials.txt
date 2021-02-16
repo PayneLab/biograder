@@ -1,0 +1,6 @@
+Generic
+
+1. Data files with index_urls.tsv
+2. Respective python class scripts
+3. Type of Data Parent Class (w/ use case functions)
+    a. children classes w/ specific versioning
