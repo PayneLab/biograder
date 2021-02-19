@@ -94,7 +94,7 @@ class Homework:
         for hint in self.hintDict[ques_num]:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
-        print(hints)
+        return hints
 
     def hashGuess(self, guess):
         hashedGuess = \

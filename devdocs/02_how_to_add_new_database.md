@@ -20,11 +20,11 @@ import biograder
 parser = biograder.Parser()
 parser.parseKey("path_to_answer_key.txt", "hw_name")
 # 1st parameter is the path to answer key file (if local just put the file name)
-# 2nd parameter is the name of the hw assignment
+# 2nd parameter is the name or abbreviation of the hw assignment
 for the biograder, we use this pattern: 'bio462_hw3'
 ```
 >This should write the two formatted files to the directory that you ran the biograder in.
->The format of these files should mat
+
 
 ## Host files on Box
 
