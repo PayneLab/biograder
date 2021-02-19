@@ -16,21 +16,13 @@ def get_dataset_path(dataset):
             str: The path to the main directory of the specified dataset.
     """
 
-    to_print = os.defpath
-    print("DEFPATH")
-    print(to_print)
-
     path_here = os.path.abspath(os.path.dirname(__file__))
     dataset_dir = f"data_{dataset}"
     dataset_path = os.path.join(path_here, dataset_dir)
-    print(dataset_path)
-    list_dir = os.listdir()
-    print(list_dir)
-    print(os.walk(path_here))
+    list_dir = os.listdir(path_here)
     if os.path.isdir(dataset_path):
         return dataset_path
     else:
-        print("ERRORS else")
         raise InvalidParameterError(f"{dataset} is not a valid dataset.")
 
 

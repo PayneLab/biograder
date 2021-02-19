@@ -1,13 +1,12 @@
-import warnings
-import re
 from .file_download import update_index
 from .file_tools import validate_version, get_version_files_paths
 from .exceptions import *
 import hashlib
 
+
 class Homework:
-    #filepath
-    #filehandle
+    # filepath
+    # filehandle
 
     def __init__(self, hw_number, version, valid_versions, data_files, no_internet):
         self._hw_number = hw_number.lower()
@@ -25,18 +24,18 @@ class Homework:
         version_data_files = data_files[self._version]  # Get the data files for this version from the data files dictionary
         self._data_files_paths = get_version_files_paths(self._hw_number, self._version, version_data_files)
 
-        #FIXME: Might need more code to make sure every file is up to date
+        # FIXME: Might need more code to make sure every file is up to date
 
         # Initialize dataframe and definitions dicts as empty for this parent class
         self._data = {}
         self._definitions = {}
+        self.answerFile = None
 
     def list_data(self):
         print("Below are the dataframes contained in this dataset:")
         for name in sorted(self._data.keys(), key=str.lower):
             df = self._data[name]
             print("\t{}\n\t\tDimensions: {}".format(name, df.shape))
-
 
     def parseAnswers(self, file_path):
         self.answerFile = open(file_path, "r")
@@ -62,22 +61,20 @@ class Homework:
         return tempDict
 
     def submit(self, qNum, guess, studentID):
-
-        guess = str(guess)
         guess = self.hashGuess(str(guess))
 
         if self.ansArray[qNum - 1] == guess:
-            #TODO: add student id google sheet stuff here
+            # TODO: add student id google sheet stuff here
 
             return True
         else:
             return False
 
     def getHint(self, ques_num):
-        #lessen hintNum to highest possible hint value
+        # lessen hintNum to highest possible hint value
         if len(self.hintDict) < ques_num:
             return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
-        ques_num = str(ques_num)  #cast to string for safety
+        ques_num = str(ques_num)  # cast to string for safety
         hints = "Question " + str(ques_num) + " hints:\n"
         for hint in self.hintDict[ques_num]:
             hints += "*" + str(hint) + "\n"
