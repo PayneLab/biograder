@@ -22,6 +22,7 @@ def download(homework, version="latest", redownload=False):
     if homework == "all":
         homeworks = [
             "bio462_hw1",
+            "bio462_hw2",
             "bio462_hw3",
         ]
 
