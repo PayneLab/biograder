@@ -19,6 +19,7 @@ class Parser:
             if line.startswith('*'):
                 endOfNum = self.find_nth(line, "*", 2)
                 question_num = line[1:endOfNum]
+                # TODO: instead of simply shifting over 2, check for the end of whitespace
                 answer = line[endOfNum+2:]
 
                 # hashes each answer via SHA256
