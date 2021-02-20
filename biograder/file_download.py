@@ -23,6 +23,7 @@ def download(homework, version="latest", redownload=False):
         homeworks = [
             "bio462_hw1",
             "bio462_hw3",
+            "bio462_hw4"
         ]
 
         overall_result = True
