@@ -1,0 +1,18 @@
+*1*	answer_to_question_one
+>>	"The hints are contained in quotes following a >> and a tab"
+>>	"second hint for question 1"
+
+*2*	answer cannot have any endline characters (ie. \n) or an endline itself
+>>	"Hints should be nested within quotes"
+>>	"Hints should also fit in a single line"
+
+*3*	Any string value works for an answer
+>>	"The hash is CASE_SENSITIVE so be conscious of capitalization"
+>>	"Compare the locations of each mutation using a function."
+
+*4*	There is always one tab separating the * and the start of the answer
+>>	"There is also one tab separating the >> and the start of each hint"
+>>	"Compare the mutations of the dataframe using a function."
+
+*5*	Any number of questions is allowed per homework assignment
+>>	"Any number of hints per question is allowed as well"

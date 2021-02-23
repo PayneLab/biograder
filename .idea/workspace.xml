@@ -29,13 +29,22 @@
 >>>>>>> 8f2dc81c9a60942443cc7b4db016c26d344bfa60
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="fdcff88a-e968-4269-8beb-11b8843949b9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/biograder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/biograder.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+=======
+    <list default="true" id="fdcff88a-e968-4269-8beb-11b8843949b9" name="Default Changelist" comment="Google Sheets">
+      <change afterPath="$PROJECT_DIR$/biograder/bio462_hw0.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/biograder/data_bio462_hw0/index_urls.tsv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+>>>>>>> 5b2798cc837008b6eb8c59083ed7d1df8cd4df61
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MANIFEST.in" beforeDir="false" afterPath="$PROJECT_DIR$/MANIFEST.in" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biograder/Homework.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/Homework.py" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/biograder/Homework18.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/Homework18.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biograder/Homework3.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/Homework3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biograder/Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/Parser.py" afterDir="false" />
@@ -48,6 +57,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/biograder/Homework.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/Homework.py" afterDir="false" />
 >>>>>>> 8f2dc81c9a60942443cc7b4db016c26d344bfa60
+=======
+      <change beforePath="$PROJECT_DIR$/biograder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/biograder/file_download.py" beforeDir="false" afterPath="$PROJECT_DIR$/biograder/file_download.py" afterDir="false" />
+>>>>>>> 5b2798cc837008b6eb8c59083ed7d1df8cd4df61
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,14 +86,19 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
 =======
     <property name="last_opened_file_path" value="$PROJECT_DIR$/sheets.py" />
 >>>>>>> 8f2dc81c9a60942443cc7b4db016c26d344bfa60
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../GenericDataAPI/GenericDataAPI" />
+>>>>>>> 5b2798cc837008b6eb8c59083ed7d1df8cd4df61
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\PayneResearch\biograder\devdocs" />
       <recent name="C:\PayneResearch\biograder\biograder\data_hw3" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -162,6 +180,14 @@
       <option name="presentableId" value="Default" />
       <updated>1602801395835</updated>
     </task>
+    <task id="LOCAL-00001" summary="Google Sheets">
+      <created>1612216701131</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612216701131</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,6 +222,7 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/src" />
     </ignored-roots>
+<<<<<<< HEAD
   </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1611349431672">
@@ -300,5 +327,9 @@
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1611771548067" />
 >>>>>>> 8f2dc81c9a60942443cc7b4db016c26d344bfa60
     <state x="364" y="1" width="807" height="822" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1611102813053" />
+=======
+    <MESSAGE value="Google Sheets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Google Sheets" />
+>>>>>>> 5b2798cc837008b6eb8c59083ed7d1df8cd4df61
   </component>
 </project>
