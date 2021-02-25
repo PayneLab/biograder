@@ -7,10 +7,10 @@ class bio462_hw3(Homework):
     # version="latest"
     def __init__(self, version="latest", no_internet=False):
 
-        valid_versions = ["1.1.0"]
+        valid_versions = ["1.2.0"]
 
         data_files = {
-            "1.1.0": [
+            "1.2.0": [
                 "bio462_hw3_ans.txt",
                 "bio462_hw3_hint.txt"
             ],
