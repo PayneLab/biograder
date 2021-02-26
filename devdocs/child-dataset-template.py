@@ -17,18 +17,20 @@ class hw_name_or_abbreviation(Homework):
         data_files = {
             ###START EXAMPLE CODE###############################################
             "version_num": [
-            "answer-hash-file.txt",
-            "hint-file.txt",
-            "other_data_file.tsv"]
+                "answer-hash-file.txt",
+                "hint-file.txt",
+                "other_data_file.tsv"
+            ],
             ###END EXAMPLE CODE#################################################
         }
 
-        #call the parent class
+        # Call the parent class
         super().__init__(hw_number="""FILL: Insert homework name or abbreviation here, in all lowercase""", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
-        # need to reference file of answer key and hints
+        
+        # Load the data into dataframes in the self._data dict
         for file_path in self._data_files_paths:
             path_elements = file_path.split(os.sep)  # Get a list of the levels of the path
-            file_name = path_elements[-1]
+            file_name = path_elements[-1]  # The last element will be the name of the file
 
             # the file_name should be an expected pattern
             if file_name == "answer-hash-file-name.txt":
@@ -36,4 +38,8 @@ class hw_name_or_abbreviation(Homework):
             elif file_name == "hint-file.txt":
                 self.hintDict = self.parseHints(file_path)
             elif file_name == "other_data_file.tsv":
-                pass #assign the file to whatever configuration you need for the assignment
+                # assign the file to whatever configuration you need for the assignment
+                ###START EXAMPLE CODE###############################################
+                self._data["dataframeName"] = pandas.read_csv(file_path, sep='\t', dtype=object)
+                ###END EXAMPLE CODE#################################################
+                
