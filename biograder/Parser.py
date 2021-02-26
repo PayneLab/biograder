@@ -5,8 +5,8 @@ class Parser:
     def __init__(self):
         pass
 
-    # give path of base file, and desired .txt file names of ans and hint files (HW'-'_Ans.txt, HW'-'_Hint.txt)
-    def parseKey(self, file_path, ansFileName, hintFileName):
+    # give path of base file, and desired hw name (bio462_hw3)
+    def parseKey(self, file_path, hwName):
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()
 
@@ -19,6 +19,7 @@ class Parser:
             if line.startswith('*'):
                 endOfNum = self.find_nth(line, "*", 2)
                 question_num = line[1:endOfNum]
+                # TODO: instead of simply shifting over 2, check for the end of whitespace
                 answer = line[endOfNum+2:]
 
                 # hashes each answer via SHA256
@@ -40,6 +41,9 @@ class Parser:
         # make files
         answerText = answerText[:len(answerText)-1]
         hintsText = hintsText[:len(hintsText)-1]
+
+        ansFileName = hwName + "_ans.txt"
+        hintFileName = hwName + "_hint.txt"
 
         ansFile = open(ansFileName, "w")
         ansFile.write(answerText)

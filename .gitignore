@@ -7,14 +7,17 @@ build/
 .DS_Store
 
 # Extract data files since they're stored remotely
-biograder/data_bio462_hw3
-biograder/data_bio462_hw1
 biograder/data_bio462_hw0
+biograder/data_bio462_hw1
+biograder/data_bio462_hw2
+biograder/data_bio462_hw3
+biograder/data_bio462_hw4
 
 # Exclude files that are downloaded by utils functions
 # --- none currently ---
 
 # Include index url files
-!biograder/data_bio462_hw3/index_urls.tsv
-!biograder/data_bio462_hw1/index_urls.tsv
 !biograder/data_bio462_hw0/index_urls.tsv
+!biograder/data_bio462_hw1/index_urls.tsv
+!biograder/data_bio462_hw2/index_urls.tsv
+!biograder/data_bio462_hw3/index_urls.tsv

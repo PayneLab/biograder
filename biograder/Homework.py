@@ -72,6 +72,7 @@ class Homework:
         if self.ansArray[qNum - 1] == guess:
 
             # # Connect to Google Sheets
+
             # scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
             #          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
             # creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
@@ -98,7 +99,7 @@ class Homework:
         for hint in self.hintDict[ques_num]:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
-        print(hints)
+        return hints
 
     def getData(self, name):
         """Check if a dataframe with the given name exists, and return a copy of it if it does.

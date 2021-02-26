@@ -16,3 +16,5 @@ biograder.egg-info/SOURCES.txt
 biograder.egg-info/dependency_links.txt
 biograder.egg-info/not-zip-safe
 biograder.egg-info/top_level.txt
+biograder/data_bio462_hw1/index_urls.tsv
+biograder/data_bio462_hw3/index_urls.tsv
