@@ -39,6 +39,10 @@ class Homework:
             df = self._data[name]
             print("\t{}\n\t\tDimensions: {}".format(name, df.shape))
 
+    def version(self):
+        """Return the dataset version of this instance, as a string."""
+        return self._version
+
     def parseAnswers(self, file_path):
         self.answerFile = open(file_path, "r")
         tempArray = []
@@ -67,7 +71,8 @@ class Homework:
 
         if self.ansArray[qNum - 1] == guess:
 
-            # Connect to Google Sheets
+            # # Connect to Google Sheets
+
             # scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
             #          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
             # creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
@@ -81,7 +86,7 @@ class Homework:
             #     qNumIndex = qNum + 1
             #     hwGrades.update_cell(studentIndex, qNumIndex, 100)
             return True
-        
+
         else:
             return False
 
@@ -95,6 +100,22 @@ class Homework:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
         return hints
+
+    def getData(self, name):
+        """Check if a dataframe with the given name exists, and return a copy of it if it does.
+            Parameters:
+                name (str): The name of the dataframe to get.
+            Returns:
+                pandas.DataFrame: A copy of the desired dataframe, if it exists in this dataset.
+        """
+        if name in self._data.keys():
+            df = self._data[name]
+            return_df = df.copy(deep=True)  # We copy it, with deep=True, so edits on their copy don't affect the master for this instance
+            return_df.index.name = df.index.name
+            return_df.columns.name = df.columns.name
+            return return_df
+        else:
+            raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
 
     def hashGuess(self, guess):
         hashedGuess = \

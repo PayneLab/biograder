@@ -1,4 +1,5 @@
 include README.md
+include biograder/data_bio462_hw0/index_urls.tsv
 include biograder/data_bio462_hw1/index_urls.tsv
 include biograder/data_bio462_hw2/index_urls.tsv
 include biograder/data_bio462_hw3/index_urls.tsv
