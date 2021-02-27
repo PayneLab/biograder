@@ -2,13 +2,9 @@ from .file_download import update_index
 from .file_tools import validate_version, get_version_files_paths
 from .exceptions import *
 import hashlib
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
 
 class Homework:
-    # filepath
-    # filehandle
 
     def __init__(self, hw_number, version, valid_versions, data_files, no_internet):
         self._hw_number = hw_number.lower()
@@ -26,14 +22,17 @@ class Homework:
         version_data_files = data_files[self._version]  # Get the data files for this version from the data files dictionary
         self._data_files_paths = get_version_files_paths(self._hw_number, self._version, version_data_files)
 
-        # FIXME: Might need more code to make sure every file is up to date
-
         # Initialize dataframe and definitions dicts as empty for this parent class
         self._data = {}
         self._definitions = {}
         self.answerFile = None
 
-    def list_data(self):
+        # Keep track of answers marked correct
+        self._student_answers = {}
+        self._student_ID = None
+
+    def listData(self):
+        """Print a list of the dataframes contained in this dataset."""
         print("Below are the dataframes contained in this dataset:")
         for name in sorted(self._data.keys(), key=str.lower):
             df = self._data[name]
@@ -66,37 +65,36 @@ class Homework:
                 tempDict[quesNum].append(line)
         return tempDict
 
-    def submit(self, qNum, guess, studentID):
-        guess = self.hashGuess(str(guess))
-
-        if self.ansArray[qNum - 1] == guess:
-
-            # # Connect to Google Sheets
-
-            # scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
-            #          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-            # creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
-            # client = gspread.authorize(creds)
-            #
-            # # Update student grades
-            # hwGrades = client.open("BiograderGrades").worksheet(self._hw_number)
-            # studentIDs = hwGrades.col_values(1)
-            # if studentID in studentIDs:
-            #     studentIndex = studentIDs.index(studentID) + 1
-            #     qNumIndex = qNum + 1
-            #     hwGrades.update_cell(studentIndex, qNumIndex, 100)
+    def submit(self, quesNum, guess, studentID):
+        """Check if answer is correct, save correct answers, and return feedback.
+            Parameters:
+                quesNum (int): The question number.
+                guess (str): The answer to check.
+                studentID (str): The student's BYU net ID.
+            Returns:
+                bool: True (correct) or False (incorrect).
+        """
+        hashedGuess = self.hashGuess(str(guess))
+        if self.ansArray[quesNum - 1] == hashedGuess:
+            # Save answer to dictionary
+            self._student_ID = studentID
+            self._student_answers[quesNum] = str(guess)
             return True
-
         else:
             return False
 
-    def getHint(self, ques_num):
-        # lessen hintNum to highest possible hint value
-        if len(self.hintDict) < ques_num:
+    def getHint(self, quesNum):
+        """Return hints for the specified question number.
+            Parameters:
+                quesNum (int): The question number.
+            Returns:
+                str: The hints.
+        """
+        if len(self.hintDict) < quesNum:
             return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
-        ques_num = str(ques_num)  # cast to string for safety
-        hints = "Question " + str(ques_num) + " hints:\n"
-        for hint in self.hintDict[ques_num]:
+        quesNum = str(quesNum)  # cast to string for safety
+        hints = "Question " + str(quesNum) + " hints:\n"
+        for hint in self.hintDict[quesNum]:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
         return hints
@@ -116,6 +114,15 @@ class Homework:
             return return_df
         else:
             raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
+
+    def endSession(self):
+        """Email the student's answers to the TA for grading."""
+        if self._student_ID is None:
+            print("No answers were marked correct.")
+        else:
+            print(f"Student ID: {self._student_ID}")
+            print(f"Homework: {self._hw_number}")
+            print(f"Answers marked correct: {self._student_answers}")
 
     def hashGuess(self, guess):
         hashedGuess = \
