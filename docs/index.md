@@ -1,4 +1,4 @@
-# Biograder
+# Introduction to the biograder package
 
 The `biograder` package provides hints and automatic
 feedback to students as they work through the bioinformatics
