@@ -2,6 +2,8 @@ from .file_download import update_index
 from .file_tools import validate_version, get_version_files_paths
 from .exceptions import *
 import hashlib
+import smtplib
+from email.message import EmailMessage
 
 
 class Homework:
@@ -117,12 +119,18 @@ class Homework:
 
     def endSession(self):
         """Email the student's answers to the TA for grading."""
+        print("ENDING SESSION")
+
+
         if self._student_ID is None:
             print("No answers were marked correct.")
         else:
             print(f"Student ID: {self._student_ID}")
             print(f"Homework: {self._hw_number}")
             print(f"Answers marked correct: {self._student_answers}")
+
+
+
 
     def hashGuess(self, guess):
         hashedGuess = \

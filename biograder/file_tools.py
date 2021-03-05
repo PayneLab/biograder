@@ -72,11 +72,11 @@ def validate_version(version, dataset, use_context, valid_versions=None):
     return return_version
 
 
-def get_version_files_paths(dataset, version, data_files):
+def get_version_files_paths(homework, version, data_files):
     """For dataset loading. Check that a version is installed, then return the paths to the data files for that version.
 
         Parameters:
-            dataset (str): The name of the dataset to get the paths for.
+            homework (str): The name of the homework dataset to get the paths for.
             version (str): The version number of the dataset to get the paths for. This function will not parse "latest"; version should have been already validated.
             data_files (list of str): The file names to get paths for.
 
@@ -85,18 +85,18 @@ def get_version_files_paths(dataset, version, data_files):
     """
 
     # Get our dataset path and index
-    dataset_path = get_dataset_path(dataset)
+    dataset_path = get_dataset_path(homework)
 
     # Check that they've installed the version they requested
-    version_path = os.path.join(dataset_path, f"{dataset}_v{version}")
+    version_path = os.path.join(dataset_path, f"{homework}_v{version}")
     if not os.path.isdir(version_path):
-        raise DataVersionNotInstalledError(f"Data version {version} is not installed. To install, run \"biograder.download(dataset='{dataset}', version='{version}')\".")
+        raise DataVersionNotInstalledError(f"Data version {version} is not installed. To install, run \"biograder.download(homework='{homework}', version='{version}')\".")
 
     data_files_paths = []
     for data_file in data_files:
         file_path = os.path.join(version_path, data_file)
         if not os.path.isfile(file_path):  # Check that the file exists
-            raise MissingFileError(f"Missing data file '{data_file}'. Call \"biograder.download(dataset='{dataset}', version='{version}')\" to download it. Dataset loading aborted.")
+            raise MissingFileError(f"Missing data file '{data_file}'. Call \"biograder.download(homework='{homework}', version='{version}')\" to download it. Homework dataset loading aborted.")
         data_files_paths.append(file_path)
 
     return data_files_paths
