@@ -18,10 +18,10 @@ through the Google Colab interface.
 Below are links to the Google Colab notebooks for
 homework assignments 1 through 6:
 
-- [Homework 1: Coding check]()
-- [Homework 2: Missense mutation]()
-- [Homework 3: Truncation mutation]()
-- [Homework 4: Copy number mutation]()
+- [Homework 1: Coding check](https://colab.research.google.com/drive/1RV2Sx5cfr9E83afB1eAFiyyo6QF4pEHZ?usp=sharing)
+- [Homework 2: Missense mutation](https://colab.research.google.com/drive/1-9eDUJhc1vLADDgxRick16GtjmSIEu45?usp=sharing)
+- [Homework 3: Truncation mutation](https://colab.research.google.com/drive/1Awq1A5wZV2hEEevCA2phN7NnZnPMiS5X?usp=sharing)
+- [Homework 4: Copy number mutation](https://colab.research.google.com/drive/1pYGj0MWivX3mevUIZR-a2Sock0fyV4xN?usp=sharing)
 - [Homework 5: mRNA]()
 - [Homework 6: Proteomics]()
 
