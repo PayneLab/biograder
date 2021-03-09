@@ -66,7 +66,7 @@ for the biograder, we use this pattern: 'bio462_hw3'
 ```
 nano index.txt
 ```
-    2. At the top of the file, add a line that has the version number preceded by a crunch, e.g. "#3.1" for version 3.1
+    2. At the top of the file, add a line that has the version number preceded by a crunch, e.g. `#3.1` for version 3.1
     3. Rearrange each line to have the file name, followed by a tab and no other whitespace, followed by the file hash, followed by no other whitespace. Stay in the text editor for now.
 
 5. Create a folder on the Box drive for the new dataset, inside the `biograder` directory, with the format `[course]_[hw#]`, e.g. `bio462_hw3`. Within that folder, create another folder with a name formatted as `[course]_[hw#]_v[version]`, e.g. `bio462_hw3_v2.1`. Upload all the compressed data files, the original copy of the homework answer key, parsed answer file, and parsed hint file to this second folder.
