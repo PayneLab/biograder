@@ -7,7 +7,7 @@ from .bio462_hw1 import bio462_hw1
 from .bio462_hw2 import bio462_hw2
 from .bio462_hw3 import bio462_hw3
 from .bio462_hw4 import bio462_hw4
-from .bio462_hw5 import bio462_hw5
+from .bio462_hw6 import bio462_hw6
 from .file_download import download
 from .file_download import download_text as _download_text
 

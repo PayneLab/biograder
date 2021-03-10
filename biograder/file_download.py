@@ -27,7 +27,7 @@ def download(homework, version="latest", redownload=False):
             "bio462_hw2",
             "bio462_hw3",
             "bio462_hw4",
-            "bio462_hw5"
+            "bio462_hw6"
         ]
 
         overall_result = True
