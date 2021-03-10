@@ -116,13 +116,14 @@ class Homework:
             raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
 
     def endSession(self):
-        print("Session Summary\n\n")
+        print("--Session Summary--\n")
         if self._student_ID is None:
             print("No answers were marked correct.")
         else:
             print(f"Student ID: {self._student_ID}")
             print(f"Homework: {self._hw_number}")
-            print("Answers marked correct---------------------")
+            print("Answers marked correct:")
+            print("-------------------------")
             out_string = ""
             for i in sorted (self._student_answers) :
                 out_string += f"Question {i}: {self._student_answers[i]}\n"
