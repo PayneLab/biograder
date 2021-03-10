@@ -89,7 +89,7 @@ def download(homework, version="latest", redownload=False):
     for data_file in files_to_download:
 
         if (homework in password_protected_datasets) and (password is None):
-            password = getpass.getpass(prompt=f'Password for {homework} dataset: ')  # We manually specify the prompt parameter so it shows up in Jupyter Notebooks
+            password = getpass.getpass(prompt=f'Password for {homework} homework: ')  # We manually specify the prompt parameter so it shows up in Jupyter Notebooks
             print("\033[F", end='\r')  # Use an ANSI escape sequence to move cursor back up to the beginning of the last line, so in the next line we can clear the password prompt
             print("\033[K", end='\r')  # Use an ANSI escape sequence to print a blank line, to clear the password prompt
 
@@ -111,18 +111,18 @@ def download(homework, version="latest", redownload=False):
     return True
 
 
-def update_index(dataset):
+def update_index(homework):
     """Check if the index of the given dataset is up to date with server version, and update it if needed.
 
         Parameters:
-            dataset (str): The name of the dataset to check the index of.
+            homework (str): The name of the dataset to check the index of.
 
         Returns:
             bool: Indicates if we were able to check the index and update if needed (i.e. we had internet)
     """
 
     # Get the path to our dataset
-    dataset_path = get_dataset_path(dataset)
+    dataset_path = get_dataset_path(homework)
 
     # Define our file names we'll need
     index_urls_file = "index_urls.tsv"
@@ -134,7 +134,7 @@ def update_index(dataset):
     urls_dict = parse_tsv_dict(index_urls_path)
     index_hash_url = urls_dict.get(index_hash_file)
 
-    checking_msg = f"Checking that {dataset} index is up-to-date..."
+    checking_msg = f"Checking that {homework} index is up-to-date..."
     print(checking_msg, end='\r')
     try:
         server_index_hash = download_text(index_hash_url)
@@ -149,7 +149,7 @@ def update_index(dataset):
             return True
 
     index_url = urls_dict.get(index_file)
-    download_file(index_url, index_path, server_index_hash, file_message=f"{dataset} index")
+    download_file(index_url, index_path, server_index_hash, file_message=f"{homework} index")
 
     if os.path.isfile(index_path):
         local_index_hash = hash_file(index_path)

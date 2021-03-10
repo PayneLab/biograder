@@ -6,7 +6,7 @@ import hashlib
 
 class Homework:
 
-    def __init__(self, hw_number, version, valid_versions, data_files, no_internet):
+    def __init__(self, hw_number, student_id, version, valid_versions, data_files, no_internet):
         self._hw_number = hw_number.lower()
 
         if not no_internet:
@@ -28,8 +28,9 @@ class Homework:
         self.answerFile = None
 
         # Keep track of answers marked correct
+        self._student_ID = student_id
         self._student_answers = {}
-        self._student_ID = None
+        self._student_attempts = {}
 
     def listData(self):
         """Print a list of the dataframes contained in this dataset."""
@@ -75,9 +76,10 @@ class Homework:
                 bool: True (correct) or False (incorrect).
         """
         hashedGuess = self.hashGuess(str(guess))
+        self._student_attempts[quesNum] = self._student_attempts.get(quesNum, 0) + 1
         if self.ansArray[quesNum - 1] == hashedGuess:
             # Save answer to dictionary
-            self._student_ID = studentID
+
             self._student_answers[quesNum] = str(guess)
             return True
         else:
@@ -126,7 +128,7 @@ class Homework:
             print("-------------------------")
             out_string = ""
             for i in sorted (self._student_answers) :
-                out_string += f"Question {i}: {self._student_answers[i]}\n"
+                out_string += f"Question {i}: Answer: {self._student_answers[i]} Attempts: {self._student_attempts[i]}\n"
             print(out_string)
 
 

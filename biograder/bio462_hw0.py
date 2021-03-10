@@ -7,7 +7,7 @@ import pandas as pd
 class bio462_hw0(Homework):
 
     # version="latest"
-    def __init__(self, version="latest", no_internet=False):
+    def __init__(self, student_id, version="latest", no_internet=False):
 
         valid_versions = ["1.1.0"]
 
@@ -19,7 +19,7 @@ class bio462_hw0(Homework):
             ],
         }
 
-        super().__init__(hw_number="bio462_hw0", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
+        super().__init__(hw_number="bio462_hw0", student_id=student_id, version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
 
         # Load the data into dataframes in the self._data dict
         for file_path in self._data_files_paths:

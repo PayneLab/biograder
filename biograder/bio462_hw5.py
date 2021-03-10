@@ -6,7 +6,7 @@ import os
 class bio462_hw5(Homework):
 
     # version="latest"
-    def __init__(self, version="latest", no_internet=False):
+    def __init__(self, student_id, version="latest", no_internet=False):
 
         # Set some needed variables, and pass them to the parent Homework class __init__ function
 
@@ -23,7 +23,7 @@ class bio462_hw5(Homework):
         }
 
         #call the parent class
-        super().__init__(hw_number="bio462_hw5", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
+        super().__init__(hw_number="bio462_hw5", student_id=student_id, version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
         # need to reference file of answer key and hints
         for file_path in self._data_files_paths:
             path_elements = file_path.split(os.sep)  # Get a list of the levels of the path
