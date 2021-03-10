@@ -66,12 +66,11 @@ class Homework:
                 tempDict[quesNum].append(line)
         return tempDict
 
-    def submit(self, quesNum, guess, studentID):
+    def submit(self, quesNum, guess):
         """Check if answer is correct, save correct answers, and return feedback.
             Parameters:
                 quesNum (int): The question number.
                 guess (str): The answer to check.
-                studentID (str): The student's BYU net ID.
             Returns:
                 bool: True (correct) or False (incorrect).
         """
