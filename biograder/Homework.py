@@ -78,7 +78,6 @@ class Homework:
         self._student_attempts[quesNum] = self._student_attempts.get(quesNum, 0) + 1
         if self.ansArray[quesNum - 1] == hashedGuess:
             # Save answer to dictionary
-
             self._student_answers[quesNum] = str(guess)
             return True
         else:
@@ -117,21 +116,18 @@ class Homework:
             raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
 
     def endSession(self):
-        print("--Session Summary--\n")
+        print("\n{: ^40s}".format("SESSION SUMMARY"))
+        print("----------------------------------------")
+        print("Student ID: {:>28s}".format(self._student_ID))
+        print("Homework: {:>30s}".format(self._hw_number))
         if self._student_ID is None:
-            print("No answers were marked correct.")
+            print("\nNo answers were marked correct.")
         else:
-            print(f"Student ID: {self._student_ID}")
-            print(f"Homework: {self._hw_number}")
-            print("Answers marked correct:")
-            print("-------------------------")
-            out_string = ""
-            for i in sorted (self._student_answers) :
-                out_string += f"Question {i}: Answer: {self._student_answers[i]} Attempts: {self._student_attempts[i]}\n"
-            print(out_string)
-
-
-
+            print("\nAnswers marked correct:")
+            print("----------------------------------------")
+            for i in sorted (self._student_answers):
+                out_string = "Question: {0:2}    Attempts: {1:2}    Answer: {2}"
+                print(out_string.format(i, self._student_attempts[i], self._student_answers[i]))
 
     def hashGuess(self, guess):
         hashedGuess = \
