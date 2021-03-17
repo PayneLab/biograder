@@ -18,10 +18,10 @@ with open(readme_path) as readme_file:
 
 setup(
     name='biograder',
-    version='0.1.0',
+    version='0.1.1',
     author='PayneLab',
     author_email='sam_payne@byu.edu',
-    description='grader',
+    description='grader', #TODO: add a better description
     url='https://github.com/PayneLab/biograder',
     packages=['biograder'],
     install_requires=[

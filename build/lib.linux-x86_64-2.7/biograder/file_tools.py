@@ -26,12 +26,12 @@ def get_dataset_path(dataset):
         raise InvalidParameterError(f"{dataset} is not a valid dataset.")
 
 
-def validate_version(version, dataset, use_context, valid_versions=None):
+def validate_version(version, homework, use_context, valid_versions=None):
     """Parse and validate a given version number. If version is "latest", check that index and installed latest match.
 
         Parameters:
             version (str): The version number to validate.
-            dataset (str): The name of the dataset we're validating the version for.
+            homework (str): The name of the dataset we're validating the version for.
             use_context (str): Either "download" or "init", depending on whether the function is being called as part of a data download or a dataset loading. Allows for more detailed error messages. Pass None if you don't want more detailed error messages.
             valid_versions (list of str, optional): A list of versions that are valid for this dataset. This way, we can ensure that if there's a new data version from the downloaded index that this version of the package doesn't have the code to handle, it won't try to load it. Default of None will skip this check.
 
@@ -40,8 +40,8 @@ def validate_version(version, dataset, use_context, valid_versions=None):
     """
 
     # Get our dataset path, then our dataset index
-    dataset_path = get_dataset_path(dataset)
-    index = get_index(dataset)
+    dataset_path = get_dataset_path(homework)
+    index = get_index(homework)
 
     # See what the highest version in the index is
     index_latest = max(index.keys(), key=packaging.version.parse)
@@ -49,7 +49,7 @@ def validate_version(version, dataset, use_context, valid_versions=None):
     # Parse and validate the version they passed
     if version in index.keys():
         if version != index_latest:  # Print a warning if they're using an old version
-            warnings.warn(f"Old {dataset} data version. Latest is {index_latest}. This is {version}.", OldDataVersionWarning, stacklevel=4)
+            warnings.warn(f"Old {homework} data version. Latest is {index_latest}. This is {version}.", OldDataVersionWarning, stacklevel=4)
         return_version = version
 
     elif version.lower() == "latest":
@@ -58,25 +58,25 @@ def validate_version(version, dataset, use_context, valid_versions=None):
             return_version = index_latest
         else:  # If their latest installed version is different from the latest version recorded in the index, then we don't know which one they meant when they passed "latest".
             if use_context == "download":
-                warnings.warn(f"Downloading new version of {dataset} dataset: {index_latest}. This will now be the default version when the dataset is loaded. If you wish to load an older version of the data, you must specify it with the 'version' parameter when you load the dataset.", DownloadingNewLatestWarning, stacklevel=3)
+                warnings.warn(f"Downloading new version of {homework} dataset: {index_latest}. This will now be the default version when the homework is loaded. If you wish to load an older version of the homework data, you must specify it with the 'version' parameter when you load the homework.", DownloadingNewLatestWarning, stacklevel=3)
                 return_version = index_latest
             elif use_context == "init":
-                raise AmbiguousLatestError(f"You requested to load the {dataset} dataset. Latest version is {index_latest}, which is not installed locally. To download it, run \"biograder.download(dataset='{dataset}')\". You will then be able to load the latest version of the dataset. To skip this and instead load the older version that is already installed, call \"biograder.{dataset.title()}(version='{latest_installed}')\".")
+                raise AmbiguousLatestError(f"You requested to load the {homework} homework. Latest version is {index_latest}, which is not installed locally. To download it, run \"biograder.download(homework='{homework}')\". You will then be able to load the latest version of the homework. To skip this and instead load the older version that is already installed, call \"biograder.{homework.title()}(version='{latest_installed}')\".")
     else:
-        raise InvalidParameterError(f"{version} is an invalid version for the {dataset} dataset. Valid versions: {', '.join(index.keys())}")
+        raise InvalidParameterError(f"{version} is an invalid version for the {homework} homework. Valid versions: {', '.join(index.keys())}")
 
     if valid_versions is not None:
         if return_version not in valid_versions:
-            raise PackageCannotHandleDataVersionError(f"You tried to load data version {return_version}, but your version of biograder can only handle these versions: {valid_versions}. Update your package to be able to load the new data. Or, if you cannot currently update, manually specify the old data version using the 'version' parameter when you load the dataset.")
+            raise PackageCannotHandleDataVersionError(f"You tried to load data version {return_version}, but your version of biograder can only handle these versions: {valid_versions}. Update your package to be able to load the new data. Or, if you cannot currently update, manually specify the old data version using the 'version' parameter when you load the homework.")
 
     return return_version
 
 
-def get_version_files_paths(dataset, version, data_files):
+def get_version_files_paths(homework, version, data_files):
     """For dataset loading. Check that a version is installed, then return the paths to the data files for that version.
 
         Parameters:
-            dataset (str): The name of the dataset to get the paths for.
+            homework (str): The name of the homework dataset to get the paths for.
             version (str): The version number of the dataset to get the paths for. This function will not parse "latest"; version should have been already validated.
             data_files (list of str): The file names to get paths for.
 
@@ -85,18 +85,18 @@ def get_version_files_paths(dataset, version, data_files):
     """
 
     # Get our dataset path and index
-    dataset_path = get_dataset_path(dataset)
+    dataset_path = get_dataset_path(homework)
 
     # Check that they've installed the version they requested
-    version_path = os.path.join(dataset_path, f"{dataset}_v{version}")
+    version_path = os.path.join(dataset_path, f"{homework}_v{version}")
     if not os.path.isdir(version_path):
-        raise DataVersionNotInstalledError(f"Data version {version} is not installed. To install, run \"biograder.download(dataset='{dataset}', version='{version}')\".")
+        raise DataVersionNotInstalledError(f"Data version {version} is not installed. To install, run \"biograder.download(homework='{homework}', version='{version}')\".")
 
     data_files_paths = []
     for data_file in data_files:
         file_path = os.path.join(version_path, data_file)
         if not os.path.isfile(file_path):  # Check that the file exists
-            raise MissingFileError(f"Missing data file '{data_file}'. Call \"biograder.download(dataset='{dataset}', version='{version}')\" to download it. Dataset loading aborted.")
+            raise MissingFileError(f"Missing data file '{data_file}'. Call \"biograder.download(homework='{homework}', version='{version}')\" to download it. Homework dataset loading aborted.")
         data_files_paths.append(file_path)
 
     return data_files_paths

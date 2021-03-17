@@ -2,15 +2,11 @@ from .file_download import update_index
 from .file_tools import validate_version, get_version_files_paths
 from .exceptions import *
 import hashlib
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
 
 class Homework:
-    # filepath
-    # filehandle
 
-    def __init__(self, hw_number, version, valid_versions, data_files, no_internet):
+    def __init__(self, hw_number, student_id, version, valid_versions, data_files, no_internet):
         self._hw_number = hw_number.lower()
 
         if not no_internet:
@@ -26,18 +22,26 @@ class Homework:
         version_data_files = data_files[self._version]  # Get the data files for this version from the data files dictionary
         self._data_files_paths = get_version_files_paths(self._hw_number, self._version, version_data_files)
 
-        # FIXME: Might need more code to make sure every file is up to date
-
         # Initialize dataframe and definitions dicts as empty for this parent class
         self._data = {}
         self._definitions = {}
         self.answerFile = None
 
-    def list_data(self):
+        # Keep track of answers marked correct
+        self._student_ID = student_id
+        self._student_answers = {}
+        self._student_attempts = {}
+
+    def listData(self):
+        """Print a list of the dataframes contained in this dataset."""
         print("Below are the dataframes contained in this dataset:")
         for name in sorted(self._data.keys(), key=str.lower):
             df = self._data[name]
             print("\t{}\n\t\tDimensions: {}".format(name, df.shape))
+
+    def version(self):
+        """Return the dataset version of this instance, as a string."""
+        return self._version
 
     def parseAnswers(self, file_path):
         self.answerFile = open(file_path, "r")
@@ -62,41 +66,68 @@ class Homework:
                 tempDict[quesNum].append(line)
         return tempDict
 
-    def submit(self, qNum, guess, studentID):
-        guess = self.hashGuess(str(guess))
-
-        if self.ansArray[qNum - 1] == guess:
-
-            # fi
-            # Connect to Google Sheets
-            # scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets",
-            #          "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-            # creds = ServiceAccountCredentials.from_json_keyfile_name("biograder/biograder/credentials.json", scope)
-            # client = gspread.authorize(creds)
-            #
-            # # fixme: self._hw_number is now formatted as "bio462_hw3" instead of "hw3" for connection to sheets
-            # # Update student grades
-            # hwGrades = client.open("BiograderGrades").worksheet(self._hw_number)
-            # studentIDs = hwGrades.col_values(1)
-            # if studentID in studentIDs:
-            #     studentIndex = studentIDs.index(studentID) + 1
-            #     qNumIndex = qNum + 1
-            #     hwGrades.update_cell(studentIndex, qNumIndex, 100)
+    def submit(self, quesNum, guess):
+        """Check if answer is correct, save correct answers, and return feedback.
+            Parameters:
+                quesNum (int): The question number.
+                guess (str): The answer to check.
+            Returns:
+                bool: True (correct) or False (incorrect).
+        """
+        hashedGuess = self.hashGuess(str(guess))
+        self._student_attempts[quesNum] = self._student_attempts.get(quesNum, 0) + 1
+        if self.ansArray[quesNum - 1] == hashedGuess:
+            # Save answer to dictionary
+            self._student_answers[quesNum] = str(guess)
             return True
-        
         else:
             return False
 
-    def getHint(self, ques_num):
-        # lessen hintNum to highest possible hint value
-        if len(self.hintDict) < ques_num:
+    def getHint(self, quesNum):
+        """Return hints for the specified question number.
+            Parameters:
+                quesNum (int): The question number.
+            Returns:
+                str: The hints.
+        """
+        if len(self.hintDict) < quesNum:
             return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
-        ques_num = str(ques_num)  # cast to string for safety
-        hints = "Question " + str(ques_num) + " hints:\n"
-        for hint in self.hintDict[ques_num]:
+        quesNum = str(quesNum)  # cast to string for safety
+        hints = "Question " + str(quesNum) + " hints:\n"
+        for hint in self.hintDict[quesNum]:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
-        print(hints)
+        return hints
+
+    def getData(self, name):
+        """Check if a dataframe with the given name exists, and return a copy of it if it does.
+            Parameters:
+                name (str): The name of the dataframe to get.
+            Returns:
+                pandas.DataFrame: A copy of the desired dataframe, if it exists in this dataset.
+        """
+        if name in self._data.keys():
+            df = self._data[name]
+            return_df = df.copy(deep=True)  # We copy it, with deep=True, so edits on their copy don't affect the master for this instance
+            return_df.index.name = df.index.name
+            return_df.columns.name = df.columns.name
+            return return_df
+        else:
+            raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
+
+    def endSession(self):
+        print("\n{: ^40s}".format("SESSION SUMMARY"))
+        print("----------------------------------------")
+        print("Student ID: {:>28s}".format(self._student_ID))
+        print("Homework: {:>30s}".format(self._hw_number))
+        if self._student_ID is None:
+            print("\nNo answers were marked correct.")
+        else:
+            print("\nAnswers marked correct:")
+            print("----------------------------------------")
+            for i in sorted (self._student_answers):
+                out_string = "Question: {0:2}    Attempts: {1:2}    Answer: {2}"
+                print(out_string.format(i, self._student_attempts[i], self._student_answers[i]))
 
     def hashGuess(self, guess):
         hashedGuess = \
