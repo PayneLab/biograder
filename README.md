@@ -7,8 +7,8 @@ These homework assignments allow students to have hands-on
 coding experiences with real data.
 The data used in the homework problems comes from the `cptac`
 package.
-(For more information about the `cptac` package, visit [this
-site](https://paynelab.github.io/cptac/)).
+(For more information about the `cptac` package, visit 
+[https://paynelab.github.io/cptac/](https://paynelab.github.io/cptac/)).
 
 
 ## How to use the biograder package
@@ -18,8 +18,8 @@ through the Google Colab interface.
 Homework assignments have been designed in Google Colab for
 the following classes:
 
-- [BIO 165: Introduction to Bioinformatics]()
-- [BIO 462: Advanced Concepts in Bioinformatics](https://paynelab.github.io/biograder/bio462.md/)
+- [BIO 165: Introduction to Bioinformatics](https://paynelab.github.io/biograder/bio165.html/)
+- [BIO 462: Advanced Concepts in Bioinformatics](https://paynelab.github.io/biograder/bio462.html/)
 
 
 ## Developer documentation
