@@ -18,9 +18,8 @@ through the Google Colab interface.
 Homework assignments have been designed in Google Colab for
 the following classes:
 
-- [BIO 165: Introduction to Bioinformatics](https://paynelab.github.io/biograder/bio165.html)
-- [BIO 462: Advanced Concepts in Bioinformatics](https://paynelab.github.io/biograder/bio461.html)
-- [BIO 462](https://paynelab.github.io/biograder/bio462)
+- [BIO 165: Introduction to Bioinformatics](https://paynelab.github.io/biograder/bio165)
+- [BIO 462: Advanced Concepts in Bioinformatics](https://paynelab.github.io/biograder/bio462)
 
 
 ## Developer documentation
