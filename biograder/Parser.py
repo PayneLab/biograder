@@ -27,7 +27,6 @@ class Parser:
                     spaceShift = adjust
 
                 answer = line[endOfNum+spaceShift:]
-                print(answer)
                 # hashes each answer via SHA256
                 answer = str(self._hashText(answer))
 
