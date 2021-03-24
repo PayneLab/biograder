@@ -19,9 +19,15 @@ class Parser:
             if line.startswith('*'):
                 endOfNum = self.find_nth(line, "*", 2)
                 question_num = line[1:endOfNum]
-                # TODO: instead of simply shifting over 2, check for the end of whitespace
-                answer = line[endOfNum+2:]
+                spaceShift = 1
+                adjust = 1
+                # count and adjust by the number of whitespace characters to avoid whitespace in the answer hash
+                while str.isspace(line[endOfNum + adjust]):
+                    adjust += 1
+                    spaceShift = adjust
 
+                answer = line[endOfNum+spaceShift:]
+                print(answer)
                 # hashes each answer via SHA256
                 answer = str(self._hashText(answer))
 

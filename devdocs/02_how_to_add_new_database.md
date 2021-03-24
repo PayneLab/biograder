@@ -21,8 +21,7 @@ git clone https://github.com/PayneLab/biograder.git
 ```
 cd biograder
 pip install .
-cd ..
-pip install biograder
+cd .. 
 python
 ```
 
@@ -170,7 +169,7 @@ You will want to test that the homework is uploaded correctly locally before you
 
 1. Install biograder the same way you installed it at the beginning of these instructions. This will update the package with your new changes.
 
-2. Open python.
+2. Open python. (after leaving the biograder package directory)
 
 ```
 >cd ..
