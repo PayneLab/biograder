@@ -25,12 +25,15 @@ class Homework:
         # Initialize dataframe and definitions dicts as empty for this parent class
         self._data = {}
         self._definitions = {}
+        self.ansArray = None
         self.answerFile = None
+        self.hintDict = None
 
         # Keep track of answers marked correct
         self._student_ID = student_id
         self._student_answers = {}
         self._student_attempts = {}
+        self._student_correct = {}
 
     def listData(self):
         """Print a list of the dataframes contained in this dataset."""
@@ -55,46 +58,51 @@ class Homework:
         tempDict = {}
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()
-        quesNum = 1
+        question = 1
         for line in file_lines:
             line = line.strip()
             if line.startswith('#'):
-                quesNum = line[1:]
+                question = line[1:]
                 newList = []
-                tempDict[quesNum] = newList
+                tempDict[question] = newList
             else:
-                tempDict[quesNum].append(line)
+                tempDict[question].append(line)
         return tempDict
 
-    def submit(self, quesNum, guess):
-        """Check if answer is correct, save correct answers, and return feedback.
+    def submit(self, question, answer):
+        """Check if answer is correct, save answers, keep track of attempts, and return feedback.
             Parameters:
-                quesNum (int): The question number.
-                guess (str): The answer to check.
+                question (int): The question number.
+                answer (str): The answer to check.
             Returns:
                 bool: True (correct) or False (incorrect).
         """
-        hashedGuess = self.hashGuess(str(guess))
-        self._student_attempts[quesNum] = self._student_attempts.get(quesNum, 0) + 1
-        if self.ansArray[quesNum - 1] == hashedGuess:
-            # Save answer to dictionary
-            self._student_answers[quesNum] = str(guess)
+        hashedGuess = self.hashGuess(str(answer))
+        self._student_attempts[question] = self._student_attempts.get(question, 0) + 1
+        if self.ansArray[question - 1] == hashedGuess:
+            self._student_correct[question] = "Yes"
+            self._student_answers[question] = str(answer)
             return True
         else:
-            return False
+            if self._student_correct[question] == "Yes":  # Don't overwrite correct answer
+                return False
+            else:
+                self._student_correct[question] = "No"
+                self._student_answers[question] = str(answer)
+                return False
 
-    def getHint(self, quesNum):
+    def getHint(self, question):
         """Return hints for the specified question number.
             Parameters:
-                quesNum (int): The question number.
+                question (int): The question number.
             Returns:
                 str: The hints.
         """
-        if len(self.hintDict) < quesNum:
+        if len(self.hintDict) < question:
             return "Question number too high. Valid options are #1 - " + str(len(self.hintDict))
-        quesNum = str(quesNum)  # cast to string for safety
-        hints = "Question " + str(quesNum) + " hints:\n"
-        for hint in self.hintDict[quesNum]:
+        question = str(question)  # cast to string for safety
+        hints = "Question " + str(question) + " hints:\n"
+        for hint in self.hintDict[question]:
             hints += "*" + str(hint) + "\n"
         hints = hints[:len(hints)-1]
         return hints
@@ -116,18 +124,22 @@ class Homework:
             raise DataFrameNotIncludedError(f"{name} dataframe not included in the {self._hw_number()} dataset.")
 
     def endSession(self):
-        print("\n{: ^40s}".format("SESSION SUMMARY"))
-        print("----------------------------------------")
-        print("Student ID: {:>28s}".format(self._student_ID))
-        print("Homework: {:>30s}".format(self._hw_number))
-        if self._student_ID is None:
-            print("\nNo answers were marked correct.")
-        else:
-            print("\nAnswers marked correct:")
-            print("----------------------------------------")
-            for i in sorted (self._student_answers):
-                out_string = "Question: {0:2}    Attempts: {1:2}    Answer: {2}"
-                print(out_string.format(i, self._student_attempts[i], self._student_answers[i]))
+        print("\n{: ^60s}".format("SESSION SUMMARY"))
+        print("------------------------------------------------------------")
+        print("Student ID: {:>48s}".format(self._student_ID))
+        print("Homework: {:>50s}".format(self._hw_number))
+        print("------------------------------------------------------------")
+        print("  Question  |  Correct  |  Attempts  |        Answer        ")
+        numCorrect = 0
+        for i in sorted (self._student_answers):
+            out_string = "  {0: ^8}  |  {1: ^7}  |  {2: ^8}  |   {3}"
+            print(out_string.format(i, self._student_correct[i], self._student_attempts[i], self._student_answers[i]))
+            if self._student_correct[i] == "Yes":
+                numCorrect += 1
+        print("------------------------------------------------------------")
+        percent = (numCorrect / len(self._student_answers)) * 100
+        score = "Total Score: {0}/{1} = {2:.2f}%"
+        print(score.format(numCorrect, len(self._student_answers), percent))
 
     def hashGuess(self, guess):
         hashedGuess = \
