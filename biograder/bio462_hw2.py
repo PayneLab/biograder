@@ -25,7 +25,7 @@ class bio462_hw2(Homework):
             elif file_name == "bio462_hw2_hint.txt":
                 self.hintDict = self.parseHints(file_path)
 
-        for quesNum in range(1, len(self.ansArray) + 1):
-            self._student_answers[quesNum] = "?"
-            self._student_attempts[quesNum] = 0
-            self._student_correct[quesNum] = "No"
+        for question in range(1, len(self.ansArray) + 1):
+            self._student_answers[question] = "?"
+            self._student_attempts[question] = 0
+            self._student_correct[question] = "No"

@@ -37,7 +37,7 @@ class bio462_hw4(Homework):
             elif file_name == "ov_gene_locations.tsv.gz":
                 self._data["ovData"] = pd.read_csv(file_path, sep='\t', dtype=object)
 
-        for quesNum in range(1, len(self.ansArray) + 1):
-            self._student_answers[quesNum] = "?"
-            self._student_attempts[quesNum] = 0
-            self._student_correct[quesNum] = "No"
+        for question in range(1, len(self.ansArray) + 1):
+            self._student_answers[question] = "?"
+            self._student_attempts[question] = 0
+            self._student_correct[question] = "No"
