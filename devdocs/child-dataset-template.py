@@ -6,7 +6,7 @@ import os
 class hw_name_or_abbreviation(Homework):
 
     # version="latest"
-    def __init__(self, version="latest", no_internet=False):
+    def __init__(self, student_id=None, version="latest", no_internet=False):
 
         # Set some needed variables, and pass them to the parent Homework class __init__ function
 
@@ -25,7 +25,7 @@ class hw_name_or_abbreviation(Homework):
         }
 
         # Call the parent class
-        super().__init__(hw_number="""FILL: Insert homework name or abbreviation here, in all lowercase""", version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
+        super().__init__(hw_number="""FILL: Insert homework name or abbreviation here, in all lowercase""", student_id=student_id, version=version, valid_versions=valid_versions, data_files=data_files, no_internet=no_internet)
         
         # Load the data into dataframes in the self._data dict
         for file_path in self._data_files_paths:

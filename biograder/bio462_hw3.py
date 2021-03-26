@@ -5,7 +5,7 @@ import os
 class bio462_hw3(Homework):
 
     # version="latest"
-    def __init__(self, student_id, version="latest", no_internet=False):
+    def __init__(self, student_id="", version="latest", no_internet=False):
 
         valid_versions = ["1.2.0"]
 
@@ -26,3 +26,8 @@ class bio462_hw3(Homework):
                 self.ansArray = self.parseAnswers(file_path)
             elif file_name == "bio462_hw3_hint.txt":
                 self.hintDict = self.parseHints(file_path)
+
+        for question in range(1, len(self.ansArray) + 1):
+            self._student_answers[question] = "?"
+            self._student_attempts[question] = 0
+            self._student_correct[question] = "No"
