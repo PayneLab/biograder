@@ -3,7 +3,7 @@ import os
 
 
 class bio462_hw2(Homework):
-    def __init__(self, student_id=None, version="latest", no_internet=False):
+    def __init__(self, student_id="", version="latest", no_internet=False):
 
         valid_versions = ["1.0.0"]
 
