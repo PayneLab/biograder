@@ -5,7 +5,7 @@ import os
 class bio462_hw3(Homework):
 
     # version="latest"
-    def __init__(self, student_id, version="latest", no_internet=False):
+    def __init__(self, student_id=None, version="latest", no_internet=False):
 
         valid_versions = ["1.2.0"]
 

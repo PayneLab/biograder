@@ -7,7 +7,7 @@ import pandas as pd
 class bio462_hw4(Homework):
 
     # version="latest"
-    def __init__(self, student_id, version="latest", no_internet=False):
+    def __init__(self, student_id=None, version="latest", no_internet=False):
 
         # Set some needed variables, and pass them to the parent Homework class __init__ function
 
