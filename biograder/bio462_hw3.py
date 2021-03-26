@@ -26,3 +26,8 @@ class bio462_hw3(Homework):
                 self.ansArray = self.parseAnswers(file_path)
             elif file_name == "bio462_hw3_hint.txt":
                 self.hintDict = self.parseHints(file_path)
+
+        for quesNum in range(1, len(self.ansArray) + 1):
+            self._student_answers[quesNum] = "?"
+            self._student_attempts[quesNum] = 0
+            self._student_correct[quesNum] = "No"

@@ -9,7 +9,7 @@ path_here = path.abspath(path.dirname(__file__))
 version = {}
 version_path = path.join(path_here, "biograder", "version.py")
 with open(version_path) as fp:
-	exec(fp.read(), version)
+    exec(fp.read(), version)
 
 # Get the long description from the README file
 readme_path = path.join(path_here, "README.md")
@@ -18,7 +18,7 @@ with open(readme_path) as readme_file:
 
 setup(
     name='biograder',
-    version='0.1.1',
+    version=version['__version__'],
     author='PayneLab',
     author_email='sam_payne@byu.edu',
     description='grader', #TODO: add a better description
