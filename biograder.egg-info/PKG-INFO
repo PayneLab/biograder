@@ -1,7 +1,7 @@
 Metadata-Version: 1.2
 Name: biograder
-Version: 0.1.1
-Summary: grader
+Version: 0.1.2
+Summary: Python packaging for biograder: automatic homework grading, hints, and feedback
 Home-page: https://github.com/PayneLab/biograder
 Author: PayneLab
 Author-email: sam_payne@byu.edu
