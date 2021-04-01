@@ -1,0 +1,43 @@
+#1
+Create a list of all the cnv values.
+Iterate through the list comparing values to find the highest one.
+Find out which gene or genes the highest metric is associated with.
+Make sure all letters in your answer are uppercase.
+Make sure there is no space after the last gene name.
+#2
+Try using a complex select to create a new dataframe of the genes we want.
+Count how many genes are in that dataframe.
+#3
+Create a list of all the genes.
+Iterate through the genes and use complex selections to compare the cnv values.
+Make sure the cnv values for both patients is above or equal to the cutoff of 0.2 for each gene.
+The cnv values don't have to be equal.
+#4
+Make sure all letters in the answer are uppercase.
+Create a list of patients.
+Create a list of cnv values for each patient.
+Iterate through the list and count how many values are below -0.2.
+Figure out which patient list has the most cnv values below -0.2
+#5
+Create a list of all ovarian sample IDs and a list of all the chromosomes
+Try going through each chromosome and creating a sorted dataframe.
+Try using the dff function to find all the loss events.
+Try using the sorted dataframe to calculate the bp length for each loss.
+Remember the longest loss event might not contain the greatest number of genes.
+DO NOT sort your answer alphabetically, maintain the order based on chromosome location.
+#6
+First make sure you have downloaded the brca cnv data from the cptac database.
+Find the Database_ID and chromosome number for the ERBB2 gene.
+Try using the pd.merge() function to merge the location dataframe given to you and the CNV dataframe.
+Look at which column is best to merge with. The BRCA cancer data is different than the Ovarian data.
+Try setting merge column as the index column.
+Try creating a dataframe with just cnv values to run the dff function on.
+Find out which events have the ERBB2 gene using the Database_ID.
+Remember that a focal cnv is any cnv <= 8 genes.
+#7
+Make sure all the letters in your answer are lowercase.
+Create a dataframe by joining the CNV and locations data.
+Create a list of patients and chromosomes.
+Try creating a list of which patients have arm level events for each chromosome.
+Remember an arm level event is 50 or more genes.
+See if any chromosome has 10 or less people in your list.
