@@ -1,4 +1,0 @@
-#1.0.0
-bio462_hw4_ans.txt	8106abe56b53d25b5da198e0cce0c883	https://byu.box.com/shared/static/26t80rq3mmjfe89il60ru0mj5wk3uf1w.txt
-bio462_hw4_hint.txt	9f81609a722a42563c73e0f7d38ef3c9	https://byu.box.com/shared/static/ngmzclx5w1w9g67hp99ah2zecs3jufyd.txt
-gene_locations.tsv.gz	1543af65fac790cc32e83f71088f9972	https://byu.box.com/shared/static/3y2z3dmysz7jyl6hmunx1eswhjx5o54h.gz
