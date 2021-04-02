@@ -14,9 +14,7 @@ class bio462_hw4(Homework):
             "1.0.0": [
                 "bio462_hw4_ans.txt",
                 "bio462_hw4_hint.txt",
-                "endo_gene_locations.tsv.gz",
-                "br_gene_locations.tsv.gz",
-                "ov_gene_locations.tsv.gz"
+                "gene_locations.tsv.gz"
             ],
         }
 
@@ -30,12 +28,8 @@ class bio462_hw4(Homework):
                 self.ansArray = self.parseAnswers(file_path)
             elif file_name == "bio462_hw4_hint.txt":
                 self.hintDict = self.parseHints(file_path)
-            elif file_name == "endo_gene_locations.tsv.gz":
-                self._data["endoData"] = pd.read_csv(file_path, sep='\t', dtype={"chromosome": "O"}, index_col=[0], usecols=['Name', 'chromosome', 'start_bp', 'end_bp'])
-            elif file_name == "br_gene_locations.tsv.gz":
-                self._data["brData"] = pd.read_csv(file_path, sep='\t', dtype={"chromosome": "O"}, index_col=[0], usecols=['Name', 'Database_ID', 'chromosome', 'start_bp', 'end_bp'])
-            elif file_name == "ov_gene_locations.tsv.gz":
-                self._data["ovData"] = pd.read_csv(file_path, sep='\t', dtype={"chromosome": "O"}, index_col=[0], usecols=['Name', 'chromosome', 'start_bp', 'end_bp'])
+            elif file_name == "gene_locations.tsv.gz":
+                self._data["locations"] = pd.read_csv(file_path, sep='\t', dtype={"chromosome": "O"}, index_col=[0], usecols=['Name', 'Database_ID', 'chromosome', 'start_bp', 'end_bp'])
 
         for question in range(1, len(self.ansArray) + 1):
             self._student_answers[question] = "?"
