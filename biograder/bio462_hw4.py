@@ -29,7 +29,7 @@ class bio462_hw4(Homework):
             elif file_name == "bio462_hw4_hint.txt":
                 self.hintDict = self.parseHints(file_path)
             elif file_name == "gene_locations.tsv.gz":
-                self._data["gene_locations"] = pd.read_csv(file_path, sep='\t', dtype=object)
+                self._data["gene_locations"] = pd.read_csv(file_path, sep='\t', dtype={"chromosome": "O"}, index_col=[0], usecols=['Name', 'Database_ID', 'chromosome', 'start_bp', 'end_bp'])
 
         for question in range(1, len(self.ansArray) + 1):
             self._student_answers[question] = "?"
