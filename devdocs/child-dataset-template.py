@@ -42,4 +42,8 @@ class hw_name_or_abbreviation(Homework):
                 ###START EXAMPLE CODE###############################################
                 self._data["dataframeName"] = pandas.read_csv(file_path, sep='\t', dtype=object)
                 ###END EXAMPLE CODE#################################################
-                
+
+        for question in range(1, len(self.ansArray) + 1):
+            self._student_answers[question] = "?"
+            self._student_attempts[question] = 0
+            self._student_correct[question] = "No"
