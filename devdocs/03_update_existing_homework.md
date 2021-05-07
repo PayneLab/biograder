@@ -13,7 +13,18 @@ Note: In the process of updating a dataset, we want to be very careful that we d
 4. In that directory, run this command: `pip install .` (don't forget the dot--it's a reference to your current directory, telling pip to build the package based on the `setup.py` file it finds in the current directory)
 5. Alternatively, if you're in a different directory, you could run `pip install /path/to/biograder/directory/with/setup/py/file`, subbing in the proper path to the biograder `setup.py` file, and replacing / with \ if you're on Windows. `pip` will follow that path, find the `setup.py` file, and then install the package based off of it.
 
-Steps for updating an existing dataset:
+Steps for updating answers and hints for existing homeworks:
+1. Update the HW#.txt for the appropriate homework.
+2. Parse the HW#.txt file using the biograder.Parser() function.
+3. Go to the appropriate file in Box and use the "Upload New Version" button to upload the new answer and hint files.
+4. Copy and past the current index.txt content into a file you can edit.
+5. Re-hash the answer and hint files with md5sum and change them on the index.txt file.
+6. DO NOT change the version number or the shared file url. That will break the system.
+7. Upload a the new index.txt file to Box.
+8. Using md5sum re-hash the index.txt file into the index_hash.txt file and upload a new version onto Box.
+9. Re-download the updated homework on Google Colab and test if the new answers and hints appear.
+
+Steps for updating code for an existing homeworks that require a version update:
 
 1. During the next several steps, you will be writing the code to load the new data version files. You want to be able to run this on your machine, so you can test the code as you work on it. However, you can't automatically do that, because when you create the dataset, the __init__ function will automatically update the dataset index, which will download the old version of the index, as stored on Box, which you don't want. However, you can't update the index on Box yet, because that would break the package for all current users trying to access the dataset.
 
@@ -56,26 +67,21 @@ Steps for updating an existing dataset:
 
         To find all places where you'd need to make the edit, you could just do a search for the string `_version`.
 
-10. Make sure that new data files are processed properly:
-    1. If any columns were being dropped from the old dataframe, make sure we should still drop those columns from the new one.
-    2. Compare the patient ids and sample ids included in the new vs. old data, and consider any ramifications of a new sample being included, or a previously included sample no longer being included.
-    3. Make sure to check all tables for duplicate column headers or rows, additional indexing columns, etc. For full formatting details, look at the dataframes from previous versions for examples, and consult the "Dataframe formatting requirements" section in the "add_new_dataset" document. 
-11. Check the possibilities for values in the "Mutation" column of the somatic_mutation dataframe. The standard possibilities are ['Frame_Shift_Del', 'Frame_Shift_Ins', 'Nonsense_Mutation', 'Nonstop_Mutation', 'Splice_Site', 'In_Frame_Del', 'In_Frame_Ins', 'Missense_Mutation']. 'Silent' is optional. If the new mutation file uses different categories, you will need to add an elif statement in the DataSet._filter_multiple_mutations function to handle that. This also affects the DataSet.get_genotype_all_vars function, and the utils.get_frequently_mutated function.
-12. Make a new index file and index hash. However, instead of creating a new index file, append the new indexing information to the end of the existing index file, to create something like this:
+10. Make a new index file and index hash. However, instead of creating a new index file, append the new indexing information to the end of the existing index file, to create something like this:
 
 ![endo_multi_version_index](imgs/endo_multi_version_index.png)
  (Note that even if a file stays exactly the same between two data versions, we still have a different copy of it in each version's data directory on Box, and thus have a unique shared URL for that file in that data version.)
 
-13. If the dataset was previously password protected but is now just under publication embargo:
+11. If the dataset was previously password protected but is now just under publication embargo:
     1. Go on Box and remove the password requirement from all the data files for all versions. You do this by clicking on a file, then clicking the "Share" button on the right hand side of the file's row, then clicking the "Link settings" button on the popup box, and then unchecking the "Require password" box on the next popup box.
     2. Remove the dataset from the `password_protected_datasets` list in the `download` function in the `biograder/file_download.py` file
     3. Update the dataset's data reuse status from "password access only" to "publication embargo" in the `list_datasets` function in the `biograder/__init__.py` file
     4. Change the password access only warning at the end of the dataset's `__init__` function to be a publication embargo warning, with the publication embargo date.
-14. If the dataset was perviously under publication embargo but now has no restrictions:
+12. If the dataset was perviously under publication embargo but now has no restrictions:
     1. Update the dataset's data reuse status from "publication embargo" to "no restrictions" in the `list_datasets` function in the `biograder/__init__.py` file
     2. Remove the publication embargo warning from the end of the dataset's `__init__` function.
-15. **IMPORTANT:** Uncomment the lines of code in the biograder/dataset.py file that you commented out in step one, and delete the temporary line of code.
-16. Release the new version of the package on GitHub and PyPI, following all of the instructions in the "release_new_package_version" document. Make sure to update the `version.txt` file on Box so users will know they need to update the package. Then, immediately after releasing the new package on PyPI, upload the updated dataset's index and index_hash files on Box. 
+13. **IMPORTANT:** Uncomment the lines of code in the biograder/dataset.py file that you commented out in step one, and delete the temporary line of code.
+14. Release the new version of the package on GitHub and PyPI, following all of the instructions in the "release_new_package_version" document. Make sure to update the `version.txt` file on Box so users will know they need to update the package. Then, immediately after releasing the new package on PyPI, upload the updated dataset's index and index_hash files on Box. 
     1. Make sure to update the files on Box quickly, because until the index and index hash files are updated, the package will be broken for anyone who tries to use the new package version. 
     2. **Make sure to re-hash the index, using md5sum, and to upload a new index hash file in addition to the new index.** If you don't, the package will think the index file was corrupted during downloads.
     3. While updating the files on Box, make sure to use the "Upload New Version" button for the existing versions of the files, instead of separately uploading the new versions of files, so that the shared URLs for the files don't change. If the URLs changed, it would make it so no one could download the files with the URLs embedded in the package.
