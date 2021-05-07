@@ -7,6 +7,11 @@ class Parser:
 
     # give path of base file, and desired hw name (bio462_hw3)
     def parseKey(self, file_path, hwName):
+        """
+
+        :param file_path: path to the RAW, unparsed answer/hint file formatted like "example_unparsed_answer_key.txt"
+        :param hwName: the name of the hw assignment (the created ans and hint files will be named with this value
+        """
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()
 
@@ -58,6 +63,9 @@ class Parser:
         hintFile.close()
 
     def find_nth(self, text, toFind, n):
+        """
+        Returns the index of the next desired character for parsing select substrings
+        """
         start = text.find(toFind)
         while start >= 0 and n > 1:
             start = text.find(toFind, start + len(toFind))
@@ -65,6 +73,10 @@ class Parser:
         return start
 
     def _hashText(self, text):
+        """
+        Accepts String input, and converts it into its hash form.  Process cannot be reversed
+        and is thus secure.
+        """
         hashedText = \
             hashlib.sha256(text.encode()).hexdigest()
         return hashedText
