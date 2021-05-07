@@ -36,4 +36,7 @@ setup(
     python_requires='>=3.6.*',
     zip_safe=False,
     include_package_data=True,
+    project_urls={
+        'Documentation': 'https://paynelab.github.io/biograder/'
+    },
 )
