@@ -1,5 +1,8 @@
 # How to release a new version of the biograder package
-
+Note: You do NOT need to release a new version for the following conditions.
+- You made changes to the Google Colab Notebooks. 
+- You made changes to existing homework files on Box that are already added to the github and are already a part of the current release.  
+ 
 1. Make sure to update:
     1. biograder/version.py
     2. Development status in setup.py
