@@ -14,15 +14,19 @@ Note: In the process of updating a dataset, we want to be very careful that we d
 5. Alternatively, if you're in a different directory, you could run `pip install /path/to/biograder/directory/with/setup/py/file`, subbing in the proper path to the biograder `setup.py` file, and replacing / with \ if you're on Windows. `pip` will follow that path, find the `setup.py` file, and then install the package based off of it.
 
 **Steps for updating answers and hints for existing homeworks:**
-1. Update the HW#.txt for the appropriate homework.
+1. Update the HW#.txt file for the appropriate homework.
 2. Parse the HW#.txt file using the biograder.Parser() function.
-3. Go to the appropriate file in Box and use the "Upload New Version" button to upload the new answer and hint files.
-4. Copy and past the current index.txt content into a file you can edit.
-5. Re-hash the answer and hint files with md5sum and change them on the index.txt file.
-6. DO NOT change the version number or the shared file url. That will break the system.
-7. Upload a the new index.txt file to Box.
-8. Using md5sum re-hash the index.txt file into the index_hash.txt file and upload a new version onto Box.
-9. Re-download the updated homework on Google Colab and test if the new answers and hints appear.
+    ```
+    import biograder
+    parser = biograder.Parser()
+    parser.parseKey("path_to_answer_key.txt", "hw_name")
+    ```
+3. Go to the appropriate files in Box and use the "Upload New Version" button to upload the new answer and hint files.
+4. Open the index.txt file for the homework you are updating, and select the button "Open" to open this file on your computer.
+5. Re-hash the answer and hint files with md5sum, and update the index.txt file with their new hashes. (DO NOT change the version number or the shared file url in index.txt. That will break the system.)
+6. Save the index.txt file to save your changes directly back to Box.
+7. Re-hash the index.txt file with md5sum, and update index_hash.txt with the new hash.
+8. Re-download the updated homework on Google Colab and test if the new answers and hints appear.
 
 **Steps for updating code for an existing homework that requires a version update:**
 
@@ -66,7 +70,7 @@ Note: In the process of updating a dataset, we want to be very careful that we d
 
 10. Make a new index file and index hash. However, instead of creating a new index file, append the new indexing information to the end of the existing index file, to create something like this:
 
-![bio462_hw1_multi_version_index](images/bio462_hw1_multi_version_index.png)
+![endo_multi_version_index](imgs/endo_multi_version_index.png)
  (Note that even if a file stays exactly the same between two data versions, we still have a different copy of it in each version's data directory on Box, and thus have a unique shared URL for that file in that data version.)
 
 11. If the dataset was previously password protected but is now just under publication embargo:
