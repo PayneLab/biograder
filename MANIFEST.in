@@ -3,4 +3,5 @@ include biograder/data_bio462_hw1/index_urls.tsv
 include biograder/data_bio462_hw2/index_urls.tsv
 include biograder/data_bio462_hw3/index_urls.tsv
 include biograder/data_bio462_hw4/index_urls.tsv
+include biograder/data_bio462_hw5/index_urls.tsv
 include biograder/data_bio462_hw6/index_urls.tsv

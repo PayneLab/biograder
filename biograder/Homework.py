@@ -47,6 +47,10 @@ class Homework:
         return self._version
 
     def parseAnswers(self, file_path):
+        """ Converts downloaded hashed answer key file into a usable data array
+        :param file_path: takes the path to the encrypted answer key file
+        :return: an array of answers stored as String values of answer hashes
+        """
         self.answerFile = open(file_path, "r")
         tempArray = []
         for ans in self.answerFile:
@@ -55,6 +59,10 @@ class Homework:
         return tempArray
 
     def parseHints(self, file_path):
+        """ Converts downloaded hint file into a usable data dictionary
+        :param file_path: takes the path to the formatted hints file
+        :return: a dictionary of all hints grouped by corresponding question
+        """
         tempDict = {}
         with open(file_path, 'r') as file_path:
             file_lines = file_path.readlines()

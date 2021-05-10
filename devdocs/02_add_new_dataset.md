@@ -181,8 +181,8 @@ You will want to test that the homework is uploaded correctly locally before you
 ```
 >import biograder
 >biograder.download('bio462_hw3', version = 'latest')
->hw = biograder.bio462_hw3()
->hw.submit(question_number, answer, student_ID)
+>hw = biograder.bio462_hw3(student_ID)
+>hw.submit(question_number, answer)
 # Should return true
 >hw.getHint(question_number)
 # Should return all hints for that question
