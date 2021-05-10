@@ -66,7 +66,7 @@ Note: In the process of updating a dataset, we want to be very careful that we d
 
 10. Make a new index file and index hash. However, instead of creating a new index file, append the new indexing information to the end of the existing index file, to create something like this:
 
-![endo_multi_version_index](imgs/endo_multi_version_index.png)
+![bio462_hw1_multi_version_index](imgs/endo_multi_version_index.png)
  (Note that even if a file stays exactly the same between two data versions, we still have a different copy of it in each version's data directory on Box, and thus have a unique shared URL for that file in that data version.)
 
 11. If the dataset was previously password protected but is now just under publication embargo:
