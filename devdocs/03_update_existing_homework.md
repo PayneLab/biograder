@@ -13,7 +13,7 @@ Note: In the process of updating a dataset, we want to be very careful that we d
 4. In that directory, run this command: `pip install .` (don't forget the dot--it's a reference to your current directory, telling pip to build the package based on the `setup.py` file it finds in the current directory)
 5. Alternatively, if you're in a different directory, you could run `pip install /path/to/biograder/directory/with/setup/py/file`, subbing in the proper path to the biograder `setup.py` file, and replacing / with \ if you're on Windows. `pip` will follow that path, find the `setup.py` file, and then install the package based off of it.
 
-Steps for updating answers and hints for existing homeworks:
+**Steps for updating answers and hints for existing homeworks:**
 1. Update the HW#.txt for the appropriate homework.
 2. Parse the HW#.txt file using the biograder.Parser() function.
 3. Go to the appropriate file in Box and use the "Upload New Version" button to upload the new answer and hint files.
@@ -24,7 +24,7 @@ Steps for updating answers and hints for existing homeworks:
 8. Using md5sum re-hash the index.txt file into the index_hash.txt file and upload a new version onto Box.
 9. Re-download the updated homework on Google Colab and test if the new answers and hints appear.
 
-Steps for updating code for an existing homeworks that require a version update:
+**Steps for updating code for an existing homework that requires a version update:**
 
 1. During the next several steps, you will be writing the code to load the new data version files. You want to be able to run this on your machine, so you can test the code as you work on it. However, you can't automatically do that, because when you create the dataset, the __init__ function will automatically update the dataset index, which will download the old version of the index, as stored on Box, which you don't want. However, you can't update the index on Box yet, because that would break the package for all current users trying to access the dataset.
 
