@@ -22,6 +22,8 @@ setup(
     author='PayneLab',
     author_email='sam_payne@byu.edu',
     description='Python packaging for biograder: automatic homework grading, hints, and feedback',
+    long_description=readme_text,
+    long_description_content_type='text/markdown',
     url='https://github.com/PayneLab/biograder',
     packages=['biograder'],
     install_requires=[
@@ -34,4 +36,7 @@ setup(
     python_requires='>=3.6.*',
     zip_safe=False,
     include_package_data=True,
+    project_urls={
+        'Documentation': 'https://paynelab.github.io/biograder/'
+    },
 )
