@@ -1,11 +1,9 @@
-# What is biograder?
+# Automatic Homework Grading, Hints, and Feedback
 
-The `biograder` package is a Python package that automatically grades 
-bioinformatics homework assignments. The package additionally provides 
-hints and automatic feedback to students as they work through 
-the assignments in Google Colab. These homework assignments allow students 
-to have hands-on coding experiences with real data. The data used in the 
-homework problems comes from the `cptac` package. (For more information 
+The `biograder` package is a Python package that automatically grades bioinformatics homework assignments. 
+The package additionally provides hints and instant feedback to students as they work through the 
+assignments in Google Colab. These homework assignments allow students to have hands-on coding experiences 
+with real data. The data used in the homework problems comes from the `cptac` package. (For more information 
 about the `cptac` package, visit [https://paynelab.github.io/cptac/](https://paynelab.github.io/cptac/)).
 
 
