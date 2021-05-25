@@ -1,6 +1,6 @@
 # How to release a new version of the biograder package
 Note: You do NOT need to release a new version for the following conditions.
-- You made changes to the Google Colab notebooks. 
+- You made changes to the Google Colab Notebooks. 
 - You made changes to existing homework files on Box that are already added to the GitHub and are already a part of the current release.
 - Within the index.txt file you updated the hashes for any changed answer or hint files without needing to change the version number at the top left hand corner of the index.txt file.  
  

@@ -80,8 +80,7 @@ def download(homework, version="latest", redownload=False):
     # Download the files
     password_protected_datasets = [
         "gbm",
-        "hnscc",
-        "lscc",
+        "lscc"
         ]
     password = None
 
