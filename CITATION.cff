@@ -1,0 +1,34 @@
+# YAML 1.2
+---
+authors: 
+  -
+    family-names: Payne
+    given-names: Sam
+  -
+    family-names: Woods
+    given-names: Calvin
+  -
+    family-names: Rasband
+    given-names: Madeline
+  -
+    family-names: Taylor
+    given-names: Mason
+  -
+    family-names: Mendenhall
+    given-names: Bryn
+cff-version: "1.1.0"
+date-released: 2021-06-02
+keywords: 
+  - cancer
+  - genomics
+  - proteomics
+  - bioinformatics
+  - "classroom teaching"
+  - "online module"
+  - Python
+license: MIT
+message: "If you use this software, please cite it using these metadata."
+repository-code: "https://github.com/PayneLab/biograder"
+title: Biograder
+version: "0.5.1"
+...
