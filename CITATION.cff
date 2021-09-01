@@ -2,22 +2,29 @@
 ---
 authors: 
   -
-    family-names: Woods
-    given-names: "Calvin S."
-  -
-    family-names: Rasband
-    given-names: "Madeline E."
-  -
     family-names: Taylor
     given-names: "Mason D."
   -
     family-names: Mendenhall
     given-names: Bryn
   -
+    family-names: Woods
+    given-names: "Calvin S."
+  -
+    family-names: Rasband
+    given-names: "Madeline E."
+  -
+    family-names: Vallejo
+    given-names: "Milene C."
+  -
+    family-names: Bailey
+    given-names: "Elizabeth G."
+  -
     family-names: Payne
     given-names: "Samuel H."
 cff-version: "1.1.0"
 date-released: 2021-06-02
+doi: "10.1128/jmbe.00167-21"
 keywords: 
   - cancer
   - genomics
@@ -29,6 +36,6 @@ keywords:
 license: MIT
 message: "If you use this software, please cite it using these metadata."
 repository-code: "https://github.com/PayneLab/biograder"
-title: biograder
+title: "Online Tools for Teaching Cancer Bioinformatics"
 version: "0.5.1"
 ...
